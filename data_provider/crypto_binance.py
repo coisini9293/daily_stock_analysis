@@ -1,19 +1,4 @@
- # -*- coding: utf-8 -*-
- """
- ===================================
- 币圈数据源适配器（Binance 公共 API）
- ===================================
-
- 设计目标（MVP 阶段）：
- 1. 为币圈模式提供最小可用的行情与 K 线数据获取能力；
- 2. 尽量复用现有日线数据结构（date/open/high/low/close/volume/amount/pct_chg）；
- 3. 不侵入现有股票 DataFetcherManager；后续由币圈分析流水线单独调用本模块。
-
- 使用说明：
- - 符号格式采用 Binance 现货交易对，例如：BTCUSDT、ETHUSDT、SOLUSDT；
- - 本模块只依赖 `requests` 与 `pandas`，不引入额外复杂依赖；
- - 调用方需自行处理网络错误与限频重试。
- """
+# -*- coding: utf-8 -*-
 
  import logging
  from datetime import datetime
