@@ -800,11 +800,13 @@ class Config:
                 deepseek_api_keys = [_single_deepseek]
 
         # LITELLM_MODEL: explicit config takes precedence; else infer from available keys
-        litellm_model = os.getenv('LITELLM_MODEL', '').strip()
+        # GitHub Actions often injects OPENAI_MODEL / LITELLM_MODEL as empty string when
+        # unset; os.getenv("K", "default") returns "" if K exists but is blank — use "or".
+        litellm_model = (os.getenv('LITELLM_MODEL') or '').strip()
         if not litellm_model:
-            _gemini_model_name = os.getenv('GEMINI_MODEL', 'gemini-3-flash-preview').strip()
-            _anthropic_model_name = os.getenv('ANTHROPIC_MODEL', 'claude-3-5-sonnet-20241022').strip()
-            _openai_model_name = os.getenv('OPENAI_MODEL', 'gpt-4o-mini').strip()
+            _gemini_model_name = (os.getenv('GEMINI_MODEL') or 'gemini-3-flash-preview').strip()
+            _anthropic_model_name = (os.getenv('ANTHROPIC_MODEL') or 'claude-3-5-sonnet-20241022').strip()
+            _openai_model_name = (os.getenv('OPENAI_MODEL') or 'gpt-4o-mini').strip()
             if gemini_api_keys:
                 litellm_model = f'gemini/{_gemini_model_name}'
             elif anthropic_api_keys:
@@ -824,7 +826,7 @@ class Config:
             litellm_fallback_models = [m.strip() for m in _fallback_str.split(',') if m.strip()]
         else:
             # Backward compat: use gemini_model_fallback when primary is gemini
-            _gemini_fallback = os.getenv('GEMINI_MODEL_FALLBACK', 'gemini-2.5-flash').strip()
+            _gemini_fallback = (os.getenv('GEMINI_MODEL_FALLBACK') or 'gemini-2.5-flash').strip()
             if litellm_model.startswith('gemini/') and _gemini_fallback:
                 _fb = f'gemini/{_gemini_fallback}' if '/' not in _gemini_fallback else _gemini_fallback
                 litellm_fallback_models = [_fb]
@@ -984,14 +986,14 @@ class Config:
             openai_api_keys=openai_api_keys,
             deepseek_api_keys=deepseek_api_keys,
             gemini_api_key=os.getenv('GEMINI_API_KEY'),
-            gemini_model=os.getenv('GEMINI_MODEL', 'gemini-3-flash-preview'),
-            gemini_model_fallback=os.getenv('GEMINI_MODEL_FALLBACK', 'gemini-2.5-flash'),
+            gemini_model=(os.getenv('GEMINI_MODEL') or 'gemini-3-flash-preview'),
+            gemini_model_fallback=(os.getenv('GEMINI_MODEL_FALLBACK') or 'gemini-2.5-flash'),
             gemini_temperature=float(os.getenv('GEMINI_TEMPERATURE', '0.7')),
             gemini_request_delay=float(os.getenv('GEMINI_REQUEST_DELAY', '2.0')),
             gemini_max_retries=int(os.getenv('GEMINI_MAX_RETRIES', '5')),
             gemini_retry_delay=float(os.getenv('GEMINI_RETRY_DELAY', '5.0')),
             anthropic_api_key=os.getenv('ANTHROPIC_API_KEY'),
-            anthropic_model=os.getenv('ANTHROPIC_MODEL', 'claude-3-5-sonnet-20241022'),
+            anthropic_model=(os.getenv('ANTHROPIC_MODEL') or 'claude-3-5-sonnet-20241022'),
             anthropic_temperature=float(os.getenv('ANTHROPIC_TEMPERATURE', '0.7')),
             anthropic_max_tokens=int(os.getenv('ANTHROPIC_MAX_TOKENS', '8192')),
             # AIHubmix is the preferred OpenAI-compatible provider (one key, all models, no VPN required).
@@ -1004,7 +1006,7 @@ class Config:
             openai_base_url=os.getenv('OPENAI_BASE_URL') or (
                 'https://aihubmix.com/v1' if os.getenv('AIHUBMIX_KEY') else None
             ),  # noqa: E501
-            openai_model=os.getenv('OPENAI_MODEL', 'gpt-4o-mini'),
+            openai_model=(os.getenv('OPENAI_MODEL') or 'gpt-4o-mini'),
             openai_vision_model=os.getenv('OPENAI_VISION_MODEL') or None,
             openai_temperature=float(os.getenv('OPENAI_TEMPERATURE', '0.7')),
             # Vision model: VISION_MODEL > OPENAI_VISION_MODEL (alias) > default

@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### 修复
+
+- **GitHub Actions 下 AIHubMix / OpenAI 兼容模型名为空**：工作流对未配置的 `OPENAI_MODEL` 等变量会注入空字符串，导致 `litellm` 实际请求 `model='openai/'` 并触发 AIHubMix「Incorrect model ID」。配置加载现对 `OPENAI_MODEL`、`GEMINI_MODEL`、`ANTHROPIC_MODEL`、`LITELLM_MODEL` 等使用「空则回退默认值」语义，与本地未设置环境变量一致。
+
 ### 新功能
 
 - 🔎 **SearXNG 公共实例自动发现与受控轮询**（#752）— 新增 `SEARXNG_PUBLIC_INSTANCES_ENABLED`，在未配置 `SEARXNG_BASE_URLS` 时默认从 `searx.space` 拉取公共实例列表，并按受控轮询顺序选择实例；同次请求内遇到超时、连接错误、HTTP 非 200 或无效 JSON 会自动切换到下一个实例。已配置自建实例的用户保持原有优先级与语义不变；`daily_analysis` GitHub Actions 工作流也已支持显式透传该开关并在启动日志中展示当前状态。
