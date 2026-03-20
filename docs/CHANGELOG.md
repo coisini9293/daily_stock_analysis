@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - **币圈数据源单点故障导致日报缺失**：币圈数据源默认增加 `CoinGecko` 兜底（`CRYPTO_DATA_PROVIDER=binance,coingecko`），当 Binance K 线请求失败时自动降级到 CoinGecko，减少“币圈日报缺失”。
 
+- **币圈轻量分析流程在云端因 `ReportType` 未定义而失败**：修复 `main.py` 中币圈调用 `ReportType.from_str(...)` 缺失 import，导致币圈日报无法生成但不影响股票链路。
+
+- **邮件通知发送失败时增加 SMTP 端口兜底**：当自动识别为 QQ（465 SSL）发送失败时，自动切换到 `587 STARTTLS` 重试，提升 GitHub Actions runner 网络环境下邮件成功率。
+
 ### 新功能
 
 - **本地快速烟测**：`python test_env.py --crypto` 仅请求少量 Binance 现货 K 线、不跑完整管道、不调 LLM；`python test_env.py --config` 现额外打印解析后的 `LITELLM_MODEL`、`OPENAI_MODEL` 与 `CRYPTO_*` 状态，便于对照 GitHub Actions 而无需每次重跑整次工作流。
