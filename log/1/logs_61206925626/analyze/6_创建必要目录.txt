@@ -1,0 +1,11 @@
+﻿2026-03-19T09:24:56.7841118Z ##[group]Run mkdir -p data logs reports
+2026-03-19T09:24:56.7841721Z [36;1mmkdir -p data logs reports[0m
+2026-03-19T09:24:56.7893679Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:24:56.7893940Z env:
+2026-03-19T09:24:56.7894211Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7894647Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:56.7895068Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7895438Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7895805Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7896184Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:56.7896501Z ##[endgroup]

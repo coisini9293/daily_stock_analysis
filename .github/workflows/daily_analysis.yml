@@ -156,6 +156,16 @@ jobs:
           # ==========================================
           STOCK_LIST: ${{ vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
           MARKET_REVIEW_REGION: ${{ vars.MARKET_REVIEW_REGION || secrets.MARKET_REVIEW_REGION || 'cn' }}
+
+          # ==========================================
+          # 币圈分析（实验性，可选）
+          # 需在仓库 Secrets 或 Variables 中配置：
+          #   CRYPTO_ENABLED=true 且 CRYPTO_SYMBOL_LIST=BTCUSDT,ETHUSDT（Binance 现货交易对）
+          # 未配置时默认为关闭，与本地 .env 行为一致
+          # ==========================================
+          CRYPTO_ENABLED: ${{ vars.CRYPTO_ENABLED || secrets.CRYPTO_ENABLED || 'false' }}
+          CRYPTO_SYMBOL_LIST: ${{ vars.CRYPTO_SYMBOL_LIST || secrets.CRYPTO_SYMBOL_LIST || '' }}
+          CRYPTO_DATA_PROVIDER: ${{ vars.CRYPTO_DATA_PROVIDER || secrets.CRYPTO_DATA_PROVIDER || 'binance' }}
           
           # ==========================================
           # 运行配置 ⬅️ 新增！
@@ -199,6 +209,14 @@ jobs:
           echo "🎯 运行模式: $MODE"
           echo "📊 自选股: $STOCK_LIST"
           echo "📝 报告类型: $REPORT_TYPE"
+          case "${CRYPTO_ENABLED,,}" in
+            true|1|yes|on)
+              echo "🪙 币圈: 已启用 | 列表: ${CRYPTO_SYMBOL_LIST:-（未配置）}"
+              ;;
+            *)
+              echo "🪙 币圈: 未启用（CRYPTO_ENABLED 非 true 或未配置 CRYPTO_SYMBOL_LIST）"
+              ;;
+          esac
           echo ""
           echo "=========================================="
           echo "📋 配置检查"
@@ -236,6 +254,10 @@ jobs:
           echo "  Telegram: $([ -n "$TELEGRAM_BOT_TOKEN" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "  Discord: $([ -n "$DISCORD_WEBHOOK_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "  AstrBot: $([ -n "$ASTRBOT_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
+          echo ""
+          echo "【币圈（实验性）】"
+          echo "  CRYPTO_ENABLED: ${CRYPTO_ENABLED:-false}"
+          echo "  CRYPTO_SYMBOL_LIST: $([ -n "$CRYPTO_SYMBOL_LIST" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "=========================================="
           echo ""
           

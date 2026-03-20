@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### 修复
 
+- **GitHub Actions 未注入币圈环境变量**：`每日股票分析` 工作流未向 `main.py` 传递 `CRYPTO_ENABLED` / `CRYPTO_SYMBOL_LIST`，即使用户在仓库 Secrets 中已配置，云端运行仍始终跳过币圈日报；工作流已补齐上述变量及启动日志中的币圈配置展示。
+
 - **GitHub Actions 下 AIHubMix / OpenAI 兼容模型名为空**：工作流对未配置的 `OPENAI_MODEL` 等变量会注入空字符串，导致 `litellm` 实际请求 `model='openai/'` 并触发 AIHubMix「Incorrect model ID」。配置加载现对 `OPENAI_MODEL`、`GEMINI_MODEL`、`ANTHROPIC_MODEL`、`LITELLM_MODEL` 等使用「空则回退默认值」语义，与本地未设置环境变量一致。
 
 ### 新功能

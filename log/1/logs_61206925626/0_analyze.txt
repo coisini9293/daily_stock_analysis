@@ -1,0 +1,937 @@
+﻿2026-03-19T09:23:02.8905987Z Current runner version: '2.332.0'
+2026-03-19T09:23:02.8932247Z ##[group]Runner Image Provisioner
+2026-03-19T09:23:02.8933140Z Hosted Compute Agent
+2026-03-19T09:23:02.8933733Z Version: 20260213.493
+2026-03-19T09:23:02.8934467Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-19T09:23:02.8935180Z Build Date: 2026-02-13T00:28:41Z
+2026-03-19T09:23:02.8935906Z Worker ID: {2016b512-577d-45f4-8532-74950b1d7afb}
+2026-03-19T09:23:02.8936662Z Azure Region: westus
+2026-03-19T09:23:02.8937193Z ##[endgroup]
+2026-03-19T09:23:02.8938721Z ##[group]Operating System
+2026-03-19T09:23:02.8939557Z Ubuntu
+2026-03-19T09:23:02.8940081Z 24.04.3
+2026-03-19T09:23:02.8940646Z LTS
+2026-03-19T09:23:02.8941178Z ##[endgroup]
+2026-03-19T09:23:02.8941706Z ##[group]Runner Image
+2026-03-19T09:23:02.8942372Z Image: ubuntu-24.04
+2026-03-19T09:23:02.8942930Z Version: 20260309.50.1
+2026-03-19T09:23:02.8944187Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-19T09:23:02.8945774Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+2026-03-19T09:23:02.8946742Z ##[endgroup]
+2026-03-19T09:23:02.8949551Z ##[group]GITHUB_TOKEN Permissions
+2026-03-19T09:23:02.8951927Z Actions: write
+2026-03-19T09:23:02.8952582Z ArtifactMetadata: write
+2026-03-19T09:23:02.8953167Z Attestations: write
+2026-03-19T09:23:02.8953805Z Checks: write
+2026-03-19T09:23:02.8954304Z Contents: write
+2026-03-19T09:23:02.8954839Z Deployments: write
+2026-03-19T09:23:02.8955514Z Discussions: write
+2026-03-19T09:23:02.8956065Z Issues: write
+2026-03-19T09:23:02.8956630Z Metadata: read
+2026-03-19T09:23:02.8957186Z Models: read
+2026-03-19T09:23:02.8957709Z Packages: write
+2026-03-19T09:23:02.8958328Z Pages: write
+2026-03-19T09:23:02.8958956Z PullRequests: write
+2026-03-19T09:23:02.8959740Z RepositoryProjects: write
+2026-03-19T09:23:02.8960483Z SecurityEvents: write
+2026-03-19T09:23:02.8961015Z Statuses: write
+2026-03-19T09:23:02.8961605Z ##[endgroup]
+2026-03-19T09:23:02.8963811Z Secret source: Actions
+2026-03-19T09:23:02.8964553Z Prepare workflow directory
+2026-03-19T09:23:02.9305436Z Prepare all required actions
+2026-03-19T09:23:02.9346309Z Getting action download info
+2026-03-19T09:23:03.4462282Z Download action repository 'actions/checkout@v5' (SHA:93cb6efe18208431cddfb8368fd83d5badbf9bfd)
+2026-03-19T09:23:03.6067755Z Download action repository 'actions/setup-python@v6' (SHA:a309ff8b426b58ec0e2a45f0f869d46889d02405)
+2026-03-19T09:23:03.7259080Z Download action repository 'actions/upload-artifact@v6' (SHA:b7c566a772e6b6bfb58ed0dc250532a479d7789f)
+2026-03-19T09:23:03.9969767Z Complete job name: analyze
+2026-03-19T09:23:04.0706299Z ##[group]Run sleep $((RANDOM % 60))
+2026-03-19T09:23:04.0707074Z [36;1msleep $((RANDOM % 60))[0m
+2026-03-19T09:23:04.0765039Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:23:04.0766027Z ##[endgroup]
+2026-03-19T09:24:00.1126245Z ##[group]Run actions/checkout@v5
+2026-03-19T09:24:00.1126605Z with:
+2026-03-19T09:24:00.1126889Z   repository: coisini9293/daily_stock_analysis
+2026-03-19T09:24:00.1127401Z   token: ***
+2026-03-19T09:24:00.1127645Z   ssh-strict: true
+2026-03-19T09:24:00.1127891Z   ssh-user: git
+2026-03-19T09:24:00.1128142Z   persist-credentials: true
+2026-03-19T09:24:00.1128424Z   clean: true
+2026-03-19T09:24:00.1128678Z   sparse-checkout-cone-mode: true
+2026-03-19T09:24:00.1128966Z   fetch-depth: 1
+2026-03-19T09:24:00.1129208Z   fetch-tags: false
+2026-03-19T09:24:00.1129631Z   show-progress: true
+2026-03-19T09:24:00.1129877Z   lfs: false
+2026-03-19T09:24:00.1130103Z   submodules: false
+2026-03-19T09:24:00.1130353Z   set-safe-directory: true
+2026-03-19T09:24:00.1130618Z ##[endgroup]
+2026-03-19T09:24:00.2045309Z Syncing repository: coisini9293/daily_stock_analysis
+2026-03-19T09:24:00.2046711Z ##[group]Getting Git version info
+2026-03-19T09:24:00.2047293Z Working directory is '/home/runner/work/daily_stock_analysis/daily_stock_analysis'
+2026-03-19T09:24:00.2048010Z [command]/usr/bin/git version
+2026-03-19T09:24:00.2110648Z git version 2.53.0
+2026-03-19T09:24:00.2135695Z ##[endgroup]
+2026-03-19T09:24:00.2148731Z Temporarily overriding HOME='/home/runner/work/_temp/8aeea054-6ee0-49f8-a802-cffb2f54b5a2' before making global git config changes
+2026-03-19T09:24:00.2150020Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-19T09:24:00.2154078Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/daily_stock_analysis/daily_stock_analysis
+2026-03-19T09:24:00.2194154Z Deleting the contents of '/home/runner/work/daily_stock_analysis/daily_stock_analysis'
+2026-03-19T09:24:00.2198281Z ##[group]Initializing the repository
+2026-03-19T09:24:00.2203171Z [command]/usr/bin/git init /home/runner/work/daily_stock_analysis/daily_stock_analysis
+2026-03-19T09:24:00.2304843Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-19T09:24:00.2305839Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-19T09:24:00.2306496Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-19T09:24:00.2307007Z hint: call:
+2026-03-19T09:24:00.2307257Z hint:
+2026-03-19T09:24:00.2307604Z hint: 	git config --global init.defaultBranch <name>
+2026-03-19T09:24:00.2308088Z hint:
+2026-03-19T09:24:00.2308703Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-19T09:24:00.2309954Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-19T09:24:00.2310469Z hint:
+2026-03-19T09:24:00.2310854Z hint: 	git branch -m <name>
+2026-03-19T09:24:00.2311384Z hint:
+2026-03-19T09:24:00.2311979Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-19T09:24:00.2312809Z Initialized empty Git repository in /home/runner/work/daily_stock_analysis/daily_stock_analysis/.git/
+2026-03-19T09:24:00.2320400Z [command]/usr/bin/git remote add origin https://github.com/coisini9293/daily_stock_analysis
+2026-03-19T09:24:00.2357366Z ##[endgroup]
+2026-03-19T09:24:00.2357884Z ##[group]Disabling automatic garbage collection
+2026-03-19T09:24:00.2361798Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-19T09:24:00.2391600Z ##[endgroup]
+2026-03-19T09:24:00.2392069Z ##[group]Setting up auth
+2026-03-19T09:24:00.2399055Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-19T09:24:00.2432911Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-19T09:24:00.2815900Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-19T09:24:00.2849138Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-19T09:24:00.3091528Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-19T09:24:00.3125362Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-19T09:24:00.3373988Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-19T09:24:00.3414413Z ##[endgroup]
+2026-03-19T09:24:00.3415115Z ##[group]Fetching the repository
+2026-03-19T09:24:00.3423863Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ba97daf69362b3bd723f1a37eebf5f3cf7e953eb:refs/remotes/origin/main
+2026-03-19T09:24:02.0211703Z From https://github.com/coisini9293/daily_stock_analysis
+2026-03-19T09:24:02.0212443Z  * [new ref]         ba97daf69362b3bd723f1a37eebf5f3cf7e953eb -> origin/main
+2026-03-19T09:24:02.0246730Z ##[endgroup]
+2026-03-19T09:24:02.0247364Z ##[group]Determining the checkout info
+2026-03-19T09:24:02.0250025Z ##[endgroup]
+2026-03-19T09:24:02.0255464Z [command]/usr/bin/git sparse-checkout disable
+2026-03-19T09:24:02.0305016Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-19T09:24:02.0340610Z ##[group]Checking out the ref
+2026-03-19T09:24:02.0345913Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-19T09:24:02.3229038Z Switched to a new branch 'main'
+2026-03-19T09:24:02.3229950Z branch 'main' set up to track 'origin/main'.
+2026-03-19T09:24:02.3260605Z ##[endgroup]
+2026-03-19T09:24:02.3330326Z [command]/usr/bin/git log -1 --format=%H
+2026-03-19T09:24:02.3361712Z ba97daf69362b3bd723f1a37eebf5f3cf7e953eb
+2026-03-19T09:24:02.3671321Z ##[group]Run actions/setup-python@v6
+2026-03-19T09:24:02.3671693Z with:
+2026-03-19T09:24:02.3671911Z   python-version: 3.11
+2026-03-19T09:24:02.3672146Z   cache: pip
+2026-03-19T09:24:02.3672354Z   check-latest: false
+2026-03-19T09:24:02.3672783Z   token: ***
+2026-03-19T09:24:02.3673001Z   update-environment: true
+2026-03-19T09:24:02.3673252Z   allow-prereleases: false
+2026-03-19T09:24:02.3673494Z   freethreaded: false
+2026-03-19T09:24:02.3673729Z ##[endgroup]
+2026-03-19T09:24:02.5028827Z ##[group]Installed versions
+2026-03-19T09:24:02.5126924Z Successfully set up CPython (3.11.15)
+2026-03-19T09:24:02.5127646Z ##[endgroup]
+2026-03-19T09:24:02.6159292Z [command]/opt/hostedtoolcache/Python/3.11.15/x64/bin/pip cache dir
+2026-03-19T09:24:02.9304337Z /home/runner/.cache/pip
+2026-03-19T09:24:03.2131842Z pip cache is not found
+2026-03-19T09:24:03.2254720Z ##[group]Run pip install --upgrade pip
+2026-03-19T09:24:03.2255128Z [36;1mpip install --upgrade pip[0m
+2026-03-19T09:24:03.2255440Z [36;1mpip install -r requirements.txt[0m
+2026-03-19T09:24:03.2310043Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:24:03.2310307Z env:
+2026-03-19T09:24:03.2310572Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:03.2311027Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:03.2311455Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:03.2311849Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:03.2312221Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:03.2312596Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:03.2312901Z ##[endgroup]
+2026-03-19T09:24:04.1098255Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (26.0.1)
+2026-03-19T09:24:04.9552242Z Collecting python-dotenv>=1.0.0 (from -r requirements.txt (line 6))
+2026-03-19T09:24:05.0139570Z   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+2026-03-19T09:24:05.0418867Z Collecting tenacity>=8.2.0 (from -r requirements.txt (line 7))
+2026-03-19T09:24:05.0452970Z   Downloading tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+2026-03-19T09:24:05.3374912Z Collecting sqlalchemy>=2.0.0 (from -r requirements.txt (line 8))
+2026-03-19T09:24:05.3410371Z   Downloading sqlalchemy-2.0.48-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+2026-03-19T09:24:05.3586079Z Collecting schedule>=1.2.0 (from -r requirements.txt (line 9))
+2026-03-19T09:24:05.3618875Z   Downloading schedule-1.2.2-py3-none-any.whl.metadata (3.8 kB)
+2026-03-19T09:24:05.3775661Z Collecting exchange-calendars>=4.5.0 (from -r requirements.txt (line 10))
+2026-03-19T09:24:05.3814501Z   Downloading exchange_calendars-4.13.2-py3-none-any.whl.metadata (26 kB)
+2026-03-19T09:24:05.3972493Z Collecting efinance>=0.5.5 (from -r requirements.txt (line 13))
+2026-03-19T09:24:05.4011594Z   Downloading efinance-0.5.8-py3-none-any.whl.metadata (41 kB)
+2026-03-19T09:24:05.4412701Z Collecting akshare>=1.12.0 (from -r requirements.txt (line 14))
+2026-03-19T09:24:05.4444821Z   Downloading akshare-1.18.40-py3-none-any.whl.metadata (13 kB)
+2026-03-19T09:24:05.4760107Z Collecting tushare>=1.4.0 (from -r requirements.txt (line 15))
+2026-03-19T09:24:05.4799609Z   Downloading tushare-1.4.25-py3-none-any.whl.metadata (3.2 kB)
+2026-03-19T09:24:05.4927602Z Collecting pytdx>=1.72 (from -r requirements.txt (line 16))
+2026-03-19T09:24:05.4968887Z   Downloading pytdx-1.72.tar.gz (80 kB)
+2026-03-19T09:24:05.5210284Z   Installing build dependencies: started
+2026-03-19T09:24:06.2760082Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:06.2767773Z   Getting requirements to build wheel: started
+2026-03-19T09:24:06.6690772Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:06.6699894Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:06.8568361Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:06.8680693Z Collecting baostock>=0.8.0 (from -r requirements.txt (line 17))
+2026-03-19T09:24:06.8708275Z   Downloading baostock-0.8.9-py3-none-any.whl.metadata (3.3 kB)
+2026-03-19T09:24:06.8939643Z Collecting yfinance>=0.2.0 (from -r requirements.txt (line 18))
+2026-03-19T09:24:06.8968275Z   Downloading yfinance-1.2.0-py2.py3-none-any.whl.metadata (6.1 kB)
+2026-03-19T09:24:06.9077761Z Collecting tickflow>=0.1.0 (from -r requirements.txt (line 19))
+2026-03-19T09:24:06.9115763Z   Downloading tickflow-0.1.17-py3-none-any.whl.metadata (10 kB)
+2026-03-19T09:24:06.9329627Z Collecting lark-oapi>=1.0.0 (from -r requirements.txt (line 22))
+2026-03-19T09:24:06.9358797Z   Downloading lark_oapi-1.5.3-py3-none-any.whl.metadata (3.7 kB)
+2026-03-19T09:24:07.0411863Z Collecting pandas>=2.0.0 (from -r requirements.txt (line 25))
+2026-03-19T09:24:07.0444125Z   Downloading pandas-3.0.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2026-03-19T09:24:07.1068326Z Collecting pypinyin>=0.50.0 (from -r requirements.txt (line 26))
+2026-03-19T09:24:07.1110958Z   Downloading pypinyin-0.55.0-py2.py3-none-any.whl.metadata (12 kB)
+2026-03-19T09:24:07.1252546Z Collecting openpyxl>=3.1.0 (from -r requirements.txt (line 27))
+2026-03-19T09:24:07.1277851Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+2026-03-19T09:24:07.2988263Z Collecting numpy>=1.24.0 (from -r requirements.txt (line 28))
+2026-03-19T09:24:07.3020623Z   Downloading numpy-2.4.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-03-19T09:24:07.3271821Z Collecting json-repair>=0.55.1 (from -r requirements.txt (line 29))
+2026-03-19T09:24:07.3305218Z   Downloading json_repair-0.58.6-py3-none-any.whl.metadata (16 kB)
+2026-03-19T09:24:07.4450471Z Collecting litellm>=1.80.10 (from -r requirements.txt (line 32))
+2026-03-19T09:24:07.4481523Z   Downloading litellm-1.82.4-py3-none-any.whl.metadata (30 kB)
+2026-03-19T09:24:07.4888523Z Collecting tiktoken<0.12.0,>=0.8.0 (from -r requirements.txt (line 33))
+2026-03-19T09:24:07.4934406Z   Downloading tiktoken-0.11.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+2026-03-19T09:24:07.5713015Z Collecting openai>=1.0.0 (from -r requirements.txt (line 34))
+2026-03-19T09:24:07.5750307Z   Downloading openai-2.29.0-py3-none-any.whl.metadata (29 kB)
+2026-03-19T09:24:07.6199513Z Collecting PyYAML>=6.0 (from -r requirements.txt (line 35))
+2026-03-19T09:24:07.6241405Z   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-03-19T09:24:07.6415242Z Collecting tavily-python>=0.3.0 (from -r requirements.txt (line 38))
+2026-03-19T09:24:07.6444421Z   Downloading tavily_python-0.7.23-py3-none-any.whl.metadata (10 kB)
+2026-03-19T09:24:07.6577122Z Collecting google-search-results>=2.4.0 (from -r requirements.txt (line 39))
+2026-03-19T09:24:07.6622350Z   Downloading google_search_results-2.4.2.tar.gz (18 kB)
+2026-03-19T09:24:07.6786443Z   Installing build dependencies: started
+2026-03-19T09:24:08.3083255Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:08.3088896Z   Getting requirements to build wheel: started
+2026-03-19T09:24:08.6255433Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:08.6263836Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:08.7958371Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:08.8133065Z Collecting requests>=2.31.0 (from -r requirements.txt (line 42))
+2026-03-19T09:24:08.8164762Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2026-03-19T09:24:08.8326489Z Collecting markdown2>=2.4.0 (from -r requirements.txt (line 43))
+2026-03-19T09:24:08.8375089Z   Downloading markdown2-2.5.5-py3-none-any.whl.metadata (2.1 kB)
+2026-03-19T09:24:08.9221847Z Collecting imgkit>=1.2.0 (from -r requirements.txt (line 44))
+2026-03-19T09:24:08.9256507Z   Downloading imgkit-1.2.3-py3-none-any.whl.metadata (8.1 kB)
+2026-03-19T09:24:08.9381910Z Collecting fake-useragent>=1.4.0 (from -r requirements.txt (line 45))
+2026-03-19T09:24:08.9408804Z   Downloading fake_useragent-2.2.0-py3-none-any.whl.metadata (17 kB)
+2026-03-19T09:24:08.9574460Z Collecting dingtalk-stream>=0.24.3 (from -r requirements.txt (line 47))
+2026-03-19T09:24:08.9602571Z   Downloading dingtalk_stream-0.24.3-py3-none-any.whl.metadata (5.3 kB)
+2026-03-19T09:24:08.9752297Z Collecting discord.py>=2.0.0 (from -r requirements.txt (line 52))
+2026-03-19T09:24:08.9780348Z   Downloading discord_py-2.7.1-py3-none-any.whl.metadata (7.5 kB)
+2026-03-19T09:24:08.9911314Z Collecting newspaper3k>=0.2.8 (from -r requirements.txt (line 55))
+2026-03-19T09:24:08.9972579Z   Downloading newspaper3k-0.2.8-py3-none-any.whl.metadata (11 kB)
+2026-03-19T09:24:09.0089145Z Collecting lxml_html_clean (from -r requirements.txt (line 56))
+2026-03-19T09:24:09.0115004Z   Downloading lxml_html_clean-0.4.4-py3-none-any.whl.metadata (2.4 kB)
+2026-03-19T09:24:09.0238659Z Collecting jinja2>=3.1.0 (from -r requirements.txt (line 59))
+2026-03-19T09:24:09.0268882Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2026-03-19T09:24:09.0640946Z Collecting fastapi>=0.109.0 (from -r requirements.txt (line 62))
+2026-03-19T09:24:09.0675328Z   Downloading fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+2026-03-19T09:24:09.0916560Z Collecting uvicorn>=0.27.0 (from uvicorn[standard]>=0.27.0->-r requirements.txt (line 63))
+2026-03-19T09:24:09.0946498Z   Downloading uvicorn-0.42.0-py3-none-any.whl.metadata (6.7 kB)
+2026-03-19T09:24:09.1064456Z Collecting python-multipart>=0.0.6 (from -r requirements.txt (line 64))
+2026-03-19T09:24:09.1090096Z   Downloading python_multipart-0.0.22-py3-none-any.whl.metadata (1.8 kB)
+2026-03-19T09:24:09.1261124Z Collecting httpx[socks] (from -r requirements.txt (line 46))
+2026-03-19T09:24:09.1289047Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-03-19T09:24:09.4888358Z Collecting regex>=2022.1.18 (from tiktoken<0.12.0,>=0.8.0->-r requirements.txt (line 33))
+2026-03-19T09:24:09.4920156Z   Downloading regex-2026.2.28-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-03-19T09:24:09.6094395Z Collecting greenlet>=1 (from sqlalchemy>=2.0.0->-r requirements.txt (line 8))
+2026-03-19T09:24:09.6126420Z   Downloading greenlet-3.3.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+2026-03-19T09:24:09.6299128Z Collecting typing-extensions>=4.6.0 (from sqlalchemy>=2.0.0->-r requirements.txt (line 8))
+2026-03-19T09:24:09.6325916Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-19T09:24:09.6487602Z Collecting pyluach>=2.3.0 (from exchange-calendars>=4.5.0->-r requirements.txt (line 10))
+2026-03-19T09:24:09.6516084Z   Downloading pyluach-2.3.0-py3-none-any.whl.metadata (4.3 kB)
+2026-03-19T09:24:09.6638867Z Collecting toolz>=1.0.0 (from exchange-calendars>=4.5.0->-r requirements.txt (line 10))
+2026-03-19T09:24:09.6669234Z   Downloading toolz-1.1.0-py3-none-any.whl.metadata (5.1 kB)
+2026-03-19T09:24:09.6791619Z Collecting tzdata>=2025.2 (from exchange-calendars>=4.5.0->-r requirements.txt (line 10))
+2026-03-19T09:24:09.6823395Z   Downloading tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-03-19T09:24:09.6922173Z Collecting korean_lunar_calendar>=0.3.1 (from exchange-calendars>=4.5.0->-r requirements.txt (line 10))
+2026-03-19T09:24:09.6948598Z   Downloading korean_lunar_calendar-0.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-03-19T09:24:09.7235884Z Collecting tqdm (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:09.7262834Z   Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+2026-03-19T09:24:09.7400403Z Collecting retry (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:09.7426234Z   Downloading retry-0.9.2-py2.py3-none-any.whl.metadata (5.8 kB)
+2026-03-19T09:24:09.7515911Z Collecting multitasking (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:09.7544347Z   Downloading multitasking-0.0.12.tar.gz (19 kB)
+2026-03-19T09:24:09.7616989Z   Installing build dependencies: started
+2026-03-19T09:24:10.3914779Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:10.3920082Z   Getting requirements to build wheel: started
+2026-03-19T09:24:10.7132290Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:10.7141243Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:10.8915072Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:10.8991397Z Collecting jsonpath (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:10.9029308Z   Downloading jsonpath-0.82.2.tar.gz (10 kB)
+2026-03-19T09:24:10.9110111Z   Installing build dependencies: started
+2026-03-19T09:24:11.5521968Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:11.5527008Z   Getting requirements to build wheel: started
+2026-03-19T09:24:11.8658527Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:11.8667965Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:12.0352605Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:12.0698793Z Collecting rich (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:12.0732681Z   Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+2026-03-19T09:24:12.0900830Z Collecting beautifulsoup4 (from efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:12.0931073Z   Downloading beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+2026-03-19T09:24:12.3203202Z Collecting lxml>=4.2.1 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.3234474Z   Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+2026-03-19T09:24:12.3712202Z Collecting curl_cffi>=0.13.0 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.3742666Z   Downloading curl_cffi-0.14.0-cp39-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (15 kB)
+2026-03-19T09:24:12.3887361Z Collecting html5lib>=1.0.1 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.3917330Z   Downloading html5lib-1.1-py2.py3-none-any.whl.metadata (16 kB)
+2026-03-19T09:24:12.4034819Z Collecting xlrd>=1.2.0 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.4073305Z   Downloading xlrd-2.0.2-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-03-19T09:24:12.4275755Z Collecting urllib3>=1.25.8 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.4307171Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+2026-03-19T09:24:12.4486205Z Collecting tabulate>=0.8.6 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.4517252Z   Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+2026-03-19T09:24:12.4678409Z Collecting decorator>=4.4.2 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.4710474Z   Downloading decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-19T09:24:12.4948237Z Collecting py-mini-racer>=0.6.0 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.4985629Z   Downloading py_mini_racer-0.6.0-py2.py3-none-manylinux1_x86_64.whl.metadata (8.7 kB)
+2026-03-19T09:24:12.5126538Z Collecting akracer>=0.0.13 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:12.5159579Z   Downloading akracer-0.0.14-py3-none-any.whl.metadata (3.3 kB)
+2026-03-19T09:24:12.5872243Z Collecting simplejson (from tushare>=1.4.0->-r requirements.txt (line 15))
+2026-03-19T09:24:12.5911406Z   Downloading simplejson-3.20.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+2026-03-19T09:24:12.6005068Z Collecting bs4 (from tushare>=1.4.0->-r requirements.txt (line 15))
+2026-03-19T09:24:12.6032989Z   Downloading bs4-0.0.2-py2.py3-none-any.whl.metadata (411 bytes)
+2026-03-19T09:24:12.6182709Z Collecting websocket-client>=0.57.0 (from tushare>=1.4.0->-r requirements.txt (line 15))
+2026-03-19T09:24:12.6209136Z   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+2026-03-19T09:24:12.6393116Z Collecting click (from pytdx>=1.72->-r requirements.txt (line 16))
+2026-03-19T09:24:12.6422591Z   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+2026-03-19T09:24:12.6548184Z Collecting six (from pytdx>=1.72->-r requirements.txt (line 16))
+2026-03-19T09:24:12.6580376Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-03-19T09:24:12.8212952Z Collecting cryptography (from pytdx>=1.72->-r requirements.txt (line 16))
+2026-03-19T09:24:12.8241540Z   Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+2026-03-19T09:24:12.8528459Z Collecting platformdirs>=2.0.0 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:12.8560802Z   Downloading platformdirs-4.9.4-py3-none-any.whl.metadata (4.7 kB)
+2026-03-19T09:24:12.9701431Z Collecting pytz>=2022.5 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:12.9734436Z   Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+2026-03-19T09:24:13.0160794Z Collecting frozendict>=2.3.4 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:13.0194783Z   Downloading frozendict-2.4.7-py3-none-any.whl.metadata (23 kB)
+2026-03-19T09:24:13.0373111Z Collecting peewee>=3.16.2 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:13.0404744Z   Downloading peewee-4.0.2-py3-none-any.whl.metadata (8.6 kB)
+2026-03-19T09:24:13.0482455Z Collecting curl_cffi>=0.13.0 (from akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:13.0513093Z   Downloading curl_cffi-0.13.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+2026-03-19T09:24:13.1955236Z Collecting protobuf>=3.19.0 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:13.1986495Z   Downloading protobuf-7.34.0-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+2026-03-19T09:24:13.2771527Z Collecting websockets>=13.0 (from yfinance>=0.2.0->-r requirements.txt (line 18))
+2026-03-19T09:24:13.2804655Z   Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+2026-03-19T09:24:13.3763763Z Collecting cffi>=1.12.0 (from curl_cffi>=0.13.0->akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:13.3801699Z   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2026-03-19T09:24:13.3974401Z Collecting certifi>=2024.2.2 (from curl_cffi>=0.13.0->akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:13.4007728Z   Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+2026-03-19T09:24:13.4180500Z Collecting requests-toolbelt (from lark-oapi>=1.0.0->-r requirements.txt (line 22))
+2026-03-19T09:24:13.4212399Z   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+2026-03-19T09:24:13.4946672Z Collecting pycryptodome (from lark-oapi>=1.0.0->-r requirements.txt (line 22))
+2026-03-19T09:24:13.4977850Z   Downloading pycryptodome-3.23.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+2026-03-19T09:24:13.5128179Z Collecting python-dateutil>=2.8.2 (from pandas>=2.0.0->-r requirements.txt (line 25))
+2026-03-19T09:24:13.5156555Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-03-19T09:24:13.5273588Z Collecting et-xmlfile (from openpyxl>=3.1.0->-r requirements.txt (line 27))
+2026-03-19T09:24:13.5301965Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+2026-03-19T09:24:14.0651893Z Collecting aiohttp>=3.10 (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.0681267Z   Downloading aiohttp-3.13.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+2026-03-19T09:24:14.0985333Z Collecting fastuuid>=0.13.0 (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.1014929Z   Downloading fastuuid-0.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)
+2026-03-19T09:24:14.1247220Z Collecting importlib-metadata>=6.8.0 (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.1278145Z   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+2026-03-19T09:24:14.1491051Z Collecting jsonschema<5.0.0,>=4.23.0 (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.1522245Z   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-03-19T09:24:14.2564561Z Collecting pydantic<3.0.0,>=2.5.0 (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.2599973Z   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2026-03-19T09:24:14.3968965Z Collecting tokenizers (from litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.4006464Z   Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2026-03-19T09:24:14.5733595Z Collecting MarkupSafe>=2.0 (from jinja2>=3.1.0->-r requirements.txt (line 59))
+2026-03-19T09:24:14.5771375Z   Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-03-19T09:24:14.5906551Z Collecting attrs>=22.2.0 (from jsonschema<5.0.0,>=4.23.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.5936100Z   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+2026-03-19T09:24:14.6062148Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema<5.0.0,>=4.23.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.6089680Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-03-19T09:24:14.6281589Z Collecting referencing>=0.28.4 (from jsonschema<5.0.0,>=4.23.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.6323527Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-03-19T09:24:14.8743457Z Collecting rpds-py>=0.25.0 (from jsonschema<5.0.0,>=4.23.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.8776082Z   Downloading rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2026-03-19T09:24:14.8896805Z Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.5.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:14.8927542Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-03-19T09:24:15.6341244Z Collecting pydantic-core==2.41.5 (from pydantic<3.0.0,>=2.5.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:15.6378719Z   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2026-03-19T09:24:15.6495640Z Collecting typing-inspection>=0.4.2 (from pydantic<3.0.0,>=2.5.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:15.6528245Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-03-19T09:24:15.6732141Z Collecting anyio<5,>=3.5.0 (from openai>=1.0.0->-r requirements.txt (line 34))
+2026-03-19T09:24:15.6766958Z   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+2026-03-19T09:24:15.6892847Z Collecting distro<2,>=1.7.0 (from openai>=1.0.0->-r requirements.txt (line 34))
+2026-03-19T09:24:15.6925253Z   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-03-19T09:24:15.7660691Z Collecting jiter<1,>=0.10.0 (from openai>=1.0.0->-r requirements.txt (line 34))
+2026-03-19T09:24:15.7696728Z   Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-03-19T09:24:15.7851730Z Collecting sniffio (from openai>=1.0.0->-r requirements.txt (line 34))
+2026-03-19T09:24:15.7882311Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-19T09:24:15.8105983Z Collecting idna>=2.8 (from anyio<5,>=3.5.0->openai>=1.0.0->-r requirements.txt (line 34))
+2026-03-19T09:24:15.8140685Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2026-03-19T09:24:15.8349038Z Collecting httpcore==1.* (from httpx[socks]->-r requirements.txt (line 46))
+2026-03-19T09:24:15.8380708Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-03-19T09:24:15.8542342Z Collecting h11>=0.16 (from httpcore==1.*->httpx[socks]->-r requirements.txt (line 46))
+2026-03-19T09:24:15.8575770Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-03-19T09:24:15.9536437Z Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->-r requirements.txt (line 42))
+2026-03-19T09:24:15.9571306Z   Downloading charset_normalizer-3.4.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-03-19T09:24:15.9845908Z Collecting socksio==1.* (from httpx[socks]->-r requirements.txt (line 46))
+2026-03-19T09:24:15.9875226Z   Downloading socksio-1.0.0-py3-none-any.whl.metadata (6.1 kB)
+2026-03-19T09:24:16.0142873Z Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.0175916Z   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+2026-03-19T09:24:16.0281923Z Collecting aiosignal>=1.4.0 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.0312188Z   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+2026-03-19T09:24:16.0969751Z Collecting frozenlist>=1.1.1 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.1003434Z   Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+2026-03-19T09:24:16.3115487Z Collecting multidict<7.0,>=4.5 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.3151470Z   Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+2026-03-19T09:24:16.3683734Z Collecting propcache>=0.2.0 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.3716622Z   Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+2026-03-19T09:24:16.6030047Z Collecting yarl<2.0,>=1.17.0 (from aiohttp>=3.10->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:16.6064653Z   Downloading yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2026-03-19T09:24:16.9472115Z Collecting Pillow>=3.3.0 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:16.9502667Z   Downloading pillow-12.1.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+2026-03-19T09:24:16.9640524Z Collecting cssselect>=0.9.2 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:16.9671193Z   Downloading cssselect-1.4.0-py3-none-any.whl.metadata (2.4 kB)
+2026-03-19T09:24:16.9837163Z Collecting nltk>=3.2.1 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:16.9864746Z   Downloading nltk-3.9.3-py3-none-any.whl.metadata (3.2 kB)
+2026-03-19T09:24:17.0001296Z Collecting feedparser>=5.2.1 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:17.0028827Z   Downloading feedparser-6.0.12-py3-none-any.whl.metadata (2.7 kB)
+2026-03-19T09:24:17.0174776Z Collecting tldextract>=2.0.1 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:17.0200165Z   Downloading tldextract-5.3.1-py3-none-any.whl.metadata (7.3 kB)
+2026-03-19T09:24:17.0297870Z Collecting feedfinder2>=0.0.4 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:17.0336902Z   Downloading feedfinder2-0.0.4.tar.gz (3.3 kB)
+2026-03-19T09:24:17.0396778Z   Installing build dependencies: started
+2026-03-19T09:24:17.6812390Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:17.6817584Z   Getting requirements to build wheel: started
+2026-03-19T09:24:18.0242312Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:18.0249789Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:18.1850567Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:18.1962257Z Collecting jieba3k>=0.35.1 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:18.1995085Z   Downloading jieba3k-0.35.1.zip (7.4 MB)
+2026-03-19T09:24:18.2422311Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.4/7.4 MB 188.2 MB/s  0:00:00
+2026-03-19T09:24:18.3506872Z   Installing build dependencies: started
+2026-03-19T09:24:18.9565113Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:18.9570987Z   Getting requirements to build wheel: started
+2026-03-19T09:24:19.2686443Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:19.2694733Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:19.4330709Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:19.4429886Z Collecting tinysegmenter==0.3 (from newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:19.4464911Z   Downloading tinysegmenter-0.3.tar.gz (16 kB)
+2026-03-19T09:24:19.4533468Z   Installing build dependencies: started
+2026-03-19T09:24:20.0733980Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:20.0738899Z   Getting requirements to build wheel: started
+2026-03-19T09:24:20.3833328Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:20.3841918Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:20.5478146Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:20.5695128Z Collecting starlette>=0.46.0 (from fastapi>=0.109.0->-r requirements.txt (line 62))
+2026-03-19T09:24:20.5724339Z   Downloading starlette-0.52.1-py3-none-any.whl.metadata (6.3 kB)
+2026-03-19T09:24:20.5869887Z Collecting annotated-doc>=0.0.2 (from fastapi>=0.109.0->-r requirements.txt (line 62))
+2026-03-19T09:24:20.5899050Z   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+2026-03-19T09:24:20.6207062Z Collecting soupsieve>=1.6.1 (from beautifulsoup4->efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:20.6236466Z   Downloading soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+2026-03-19T09:24:20.6352106Z Collecting pycparser (from cffi>=1.12.0->curl_cffi>=0.13.0->akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:20.6381349Z   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+2026-03-19T09:24:20.6512665Z Collecting sgmllib3k (from feedparser>=5.2.1->newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:20.6541203Z   Downloading sgmllib3k-1.0.0.tar.gz (5.8 kB)
+2026-03-19T09:24:20.6598190Z   Installing build dependencies: started
+2026-03-19T09:24:21.2786139Z   Installing build dependencies: finished with status 'done'
+2026-03-19T09:24:21.2791457Z   Getting requirements to build wheel: started
+2026-03-19T09:24:21.5932183Z   Getting requirements to build wheel: finished with status 'done'
+2026-03-19T09:24:21.5939848Z   Preparing metadata (pyproject.toml): started
+2026-03-19T09:24:21.7647984Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:21.7780162Z Collecting webencodings (from html5lib>=1.0.1->akshare>=1.12.0->-r requirements.txt (line 14))
+2026-03-19T09:24:21.7807031Z   Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+2026-03-19T09:24:21.7952154Z Collecting zipp>=3.20 (from importlib-metadata>=6.8.0->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:21.7980023Z   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+2026-03-19T09:24:21.8246464Z Collecting joblib (from nltk>=3.2.1->newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:21.8277114Z   Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+2026-03-19T09:24:21.8650904Z Collecting requests-file>=1.4 (from tldextract>=2.0.1->newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:21.8681653Z   Downloading requests_file-3.0.1-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-03-19T09:24:21.8868401Z Collecting filelock>=3.0.8 (from tldextract>=2.0.1->newspaper3k>=0.2.8->-r requirements.txt (line 55))
+2026-03-19T09:24:21.8902748Z   Downloading filelock-3.25.2-py3-none-any.whl.metadata (2.0 kB)
+2026-03-19T09:24:21.9251910Z Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.27.0->-r requirements.txt (line 63))
+2026-03-19T09:24:21.9283008Z   Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+2026-03-19T09:24:21.9641417Z Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.27.0->-r requirements.txt (line 63))
+2026-03-19T09:24:21.9671652Z   Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+2026-03-19T09:24:22.0357580Z Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.27.0->-r requirements.txt (line 63))
+2026-03-19T09:24:22.0390088Z   Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2026-03-19T09:24:22.0734651Z Collecting py<2.0.0,>=1.4.26 (from retry->efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:22.0764324Z   Downloading py-1.11.0-py2.py3-none-any.whl.metadata (2.8 kB)
+2026-03-19T09:24:22.0901438Z Collecting markdown-it-py>=2.2.0 (from rich->efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:22.0930991Z   Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+2026-03-19T09:24:22.1104106Z Collecting pygments<3.0.0,>=2.13.0 (from rich->efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:22.1132441Z   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+2026-03-19T09:24:22.1241299Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->efinance>=0.5.5->-r requirements.txt (line 13))
+2026-03-19T09:24:22.1267388Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-03-19T09:24:22.1684999Z Collecting huggingface-hub<2.0,>=0.16.4 (from tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.1716296Z   Downloading huggingface_hub-1.7.1-py3-none-any.whl.metadata (13 kB)
+2026-03-19T09:24:22.2040101Z Collecting fsspec>=2023.5.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.2067914Z   Downloading fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
+2026-03-19T09:24:22.2689013Z Collecting hf-xet<2.0.0,>=1.4.2 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.2721005Z   Downloading hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+2026-03-19T09:24:22.2868927Z Collecting packaging>=20.9 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.2897939Z   Downloading packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-19T09:24:22.3136254Z Collecting typer (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.3177231Z   Downloading typer-0.24.1-py3-none-any.whl.metadata (16 kB)
+2026-03-19T09:24:22.3371102Z Collecting shellingham>=1.3.0 (from typer->huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.80.10->-r requirements.txt (line 32))
+2026-03-19T09:24:22.3397848Z   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-03-19T09:24:22.3542088Z Downloading tiktoken-0.11.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+2026-03-19T09:24:22.3626450Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 154.9 MB/s  0:00:00
+2026-03-19T09:24:22.3658061Z Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+2026-03-19T09:24:22.3705964Z Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)
+2026-03-19T09:24:22.3750945Z Downloading sqlalchemy-2.0.48-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.3 MB)
+2026-03-19T09:24:22.3908547Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 230.7 MB/s  0:00:00
+2026-03-19T09:24:22.3944543Z Downloading schedule-1.2.2-py3-none-any.whl (12 kB)
+2026-03-19T09:24:22.4001243Z Downloading exchange_calendars-4.13.2-py3-none-any.whl (213 kB)
+2026-03-19T09:24:22.4095058Z Downloading efinance-0.5.8-py3-none-any.whl (75 kB)
+2026-03-19T09:24:22.4178451Z Downloading akshare-1.18.40-py3-none-any.whl (1.1 MB)
+2026-03-19T09:24:22.4261602Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 151.6 MB/s  0:00:00
+2026-03-19T09:24:22.4290711Z Downloading tushare-1.4.25-py3-none-any.whl (142 kB)
+2026-03-19T09:24:22.4354808Z Downloading baostock-0.8.9-py3-none-any.whl (45 kB)
+2026-03-19T09:24:22.4456350Z Downloading yfinance-1.2.0-py2.py3-none-any.whl (130 kB)
+2026-03-19T09:24:22.4515201Z Downloading curl_cffi-0.13.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.3 MB)
+2026-03-19T09:24:22.5018421Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 179.7 MB/s  0:00:00
+2026-03-19T09:24:22.5055258Z Downloading tickflow-0.1.17-py3-none-any.whl (35 kB)
+2026-03-19T09:24:22.5101574Z Downloading lark_oapi-1.5.3-py3-none-any.whl (7.0 MB)
+2026-03-19T09:24:22.5539612Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 170.5 MB/s  0:00:00
+2026-03-19T09:24:22.5574540Z Downloading pandas-3.0.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.3 MB)
+2026-03-19T09:24:22.6056027Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 245.3 MB/s  0:00:00
+2026-03-19T09:24:22.6099890Z Downloading pypinyin-0.55.0-py2.py3-none-any.whl (840 kB)
+2026-03-19T09:24:22.6164581Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 840.2/840.2 kB 138.8 MB/s  0:00:00
+2026-03-19T09:24:22.6196907Z Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+2026-03-19T09:24:22.6253191Z Downloading numpy-2.4.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+2026-03-19T09:24:22.6932538Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 254.4 MB/s  0:00:00
+2026-03-19T09:24:22.6962911Z Downloading json_repair-0.58.6-py3-none-any.whl (43 kB)
+2026-03-19T09:24:22.7015587Z Downloading litellm-1.82.4-py3-none-any.whl (15.6 MB)
+2026-03-19T09:24:22.7663748Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.6/15.6 MB 247.7 MB/s  0:00:00
+2026-03-19T09:24:22.7694177Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2026-03-19T09:24:22.7751255Z Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-03-19T09:24:22.7804056Z Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+2026-03-19T09:24:22.7886759Z Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-03-19T09:24:22.8019909Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 174.2 MB/s  0:00:00
+2026-03-19T09:24:22.8061022Z Downloading openai-2.29.0-py3-none-any.whl (1.1 MB)
+2026-03-19T09:24:22.8148678Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 141.9 MB/s  0:00:00
+2026-03-19T09:24:22.8179701Z Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+2026-03-19T09:24:22.8233601Z Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+2026-03-19T09:24:22.8284621Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-03-19T09:24:22.8334649Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-03-19T09:24:22.8389185Z Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+2026-03-19T09:24:22.8451752Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2026-03-19T09:24:22.8504564Z Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2026-03-19T09:24:22.8572892Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 123.0 MB/s  0:00:00
+2026-03-19T09:24:22.8600974Z Downloading tavily_python-0.7.23-py3-none-any.whl (19 kB)
+2026-03-19T09:24:22.8653152Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+2026-03-19T09:24:22.8704719Z Downloading charset_normalizer-3.4.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (204 kB)
+2026-03-19T09:24:22.8764148Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2026-03-19T09:24:22.8819877Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+2026-03-19T09:24:22.8874699Z Downloading markdown2-2.5.5-py3-none-any.whl (56 kB)
+2026-03-19T09:24:22.8936973Z Downloading imgkit-1.2.3-py3-none-any.whl (10 kB)
+2026-03-19T09:24:22.8990350Z Downloading fake_useragent-2.2.0-py3-none-any.whl (161 kB)
+2026-03-19T09:24:22.9049908Z Downloading socksio-1.0.0-py3-none-any.whl (12 kB)
+2026-03-19T09:24:22.9100867Z Downloading dingtalk_stream-0.24.3-py3-none-any.whl (27 kB)
+2026-03-19T09:24:22.9153002Z Downloading discord_py-2.7.1-py3-none-any.whl (1.2 MB)
+2026-03-19T09:24:22.9239780Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 161.4 MB/s  0:00:00
+2026-03-19T09:24:22.9274723Z Downloading aiohttp-3.13.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+2026-03-19T09:24:22.9383414Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 183.3 MB/s  0:00:00
+2026-03-19T09:24:22.9418982Z Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+2026-03-19T09:24:22.9489572Z Downloading yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (102 kB)
+2026-03-19T09:24:22.9537439Z Downloading newspaper3k-0.2.8-py3-none-any.whl (211 kB)
+2026-03-19T09:24:22.9591879Z Downloading lxml_html_clean-0.4.4-py3-none-any.whl (14 kB)
+2026-03-19T09:24:22.9636904Z Downloading fastapi-0.135.1-py3-none-any.whl (116 kB)
+2026-03-19T09:24:22.9687834Z Downloading uvicorn-0.42.0-py3-none-any.whl (68 kB)
+2026-03-19T09:24:22.9758615Z Downloading python_multipart-0.0.22-py3-none-any.whl (24 kB)
+2026-03-19T09:24:22.9804631Z Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+2026-03-19T09:24:22.9847587Z Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+2026-03-19T09:24:22.9892650Z Downloading akracer-0.0.14-py3-none-any.whl (10.1 MB)
+2026-03-19T09:24:23.0539298Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.1/10.1 MB 165.6 MB/s  0:00:00
+2026-03-19T09:24:23.0569691Z Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+2026-03-19T09:24:23.0624881Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-03-19T09:24:23.0672711Z Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+2026-03-19T09:24:23.0721582Z Downloading beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+2026-03-19T09:24:23.0775883Z Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+2026-03-19T09:24:23.0827609Z Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2026-03-19T09:24:23.0883739Z Downloading click-8.3.1-py3-none-any.whl (108 kB)
+2026-03-19T09:24:23.0935532Z Downloading cssselect-1.4.0-py3-none-any.whl (18 kB)
+2026-03-19T09:24:23.0984999Z Downloading decorator-5.2.1-py3-none-any.whl (9.2 kB)
+2026-03-19T09:24:23.1036494Z Downloading fastuuid-0.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (279 kB)
+2026-03-19T09:24:23.1105576Z Downloading feedparser-6.0.12-py3-none-any.whl (81 kB)
+2026-03-19T09:24:23.1164762Z Downloading frozendict-2.4.7-py3-none-any.whl (16 kB)
+2026-03-19T09:24:23.1222803Z Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+2026-03-19T09:24:23.1284823Z Downloading greenlet-3.3.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (594 kB)
+2026-03-19T09:24:23.1348054Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 594.2/594.2 kB 87.8 MB/s  0:00:00
+2026-03-19T09:24:23.1377461Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-03-19T09:24:23.1428183Z Downloading html5lib-1.1-py2.py3-none-any.whl (112 kB)
+2026-03-19T09:24:23.1480289Z Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+2026-03-19T09:24:23.1527513Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-03-19T09:24:23.1585695Z Downloading korean_lunar_calendar-0.3.1-py3-none-any.whl (9.0 kB)
+2026-03-19T09:24:23.1636697Z Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-03-19T09:24:23.1900555Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 215.8 MB/s  0:00:00
+2026-03-19T09:24:23.1934108Z Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2026-03-19T09:24:23.1991441Z Downloading nltk-3.9.3-py3-none-any.whl (1.5 MB)
+2026-03-19T09:24:23.2089025Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 181.4 MB/s  0:00:00
+2026-03-19T09:24:23.2123372Z Downloading peewee-4.0.2-py3-none-any.whl (143 kB)
+2026-03-19T09:24:23.2179682Z Downloading pillow-12.1.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+2026-03-19T09:24:23.2492711Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 238.4 MB/s  0:00:00
+2026-03-19T09:24:23.2523397Z Downloading platformdirs-4.9.4-py3-none-any.whl (21 kB)
+2026-03-19T09:24:23.2576537Z Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+2026-03-19T09:24:23.2636172Z Downloading protobuf-7.34.0-cp310-abi3-manylinux2014_x86_64.whl (324 kB)
+2026-03-19T09:24:23.2700233Z Downloading py_mini_racer-0.6.0-py2.py3-none-manylinux1_x86_64.whl (5.4 MB)
+2026-03-19T09:24:23.3072605Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 161.0 MB/s  0:00:00
+2026-03-19T09:24:23.3104305Z Downloading pyluach-2.3.0-py3-none-any.whl (25 kB)
+2026-03-19T09:24:23.3162448Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-03-19T09:24:23.3237433Z Downloading pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+2026-03-19T09:24:23.3308651Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-03-19T09:24:23.3363931Z Downloading regex-2026.2.28-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (800 kB)
+2026-03-19T09:24:23.3433034Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 800.2/800.2 kB 125.6 MB/s  0:00:00
+2026-03-19T09:24:23.3465351Z Downloading rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (390 kB)
+2026-03-19T09:24:23.3538915Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-03-19T09:24:23.3586171Z Downloading soupsieve-2.8.3-py3-none-any.whl (37 kB)
+2026-03-19T09:24:23.3630334Z Downloading starlette-0.52.1-py3-none-any.whl (74 kB)
+2026-03-19T09:24:23.3678072Z Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+2026-03-19T09:24:23.3726704Z Downloading tldextract-5.3.1-py3-none-any.whl (105 kB)
+2026-03-19T09:24:23.3778971Z Downloading filelock-3.25.2-py3-none-any.whl (26 kB)
+2026-03-19T09:24:23.3824336Z Downloading requests_file-3.0.1-py2.py3-none-any.whl (4.5 kB)
+2026-03-19T09:24:23.3871347Z Downloading toolz-1.1.0-py3-none-any.whl (58 kB)
+2026-03-19T09:24:23.3921248Z Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+2026-03-19T09:24:23.3970897Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2026-03-19T09:24:23.4024957Z Downloading tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+2026-03-19T09:24:23.4092457Z Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (456 kB)
+2026-03-19T09:24:23.4186898Z Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+2026-03-19T09:24:23.4376325Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 220.6 MB/s  0:00:00
+2026-03-19T09:24:23.4407731Z Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-03-19T09:24:23.4471457Z Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+2026-03-19T09:24:23.4524616Z Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+2026-03-19T09:24:23.4578746Z Downloading xlrd-2.0.2-py2.py3-none-any.whl (96 kB)
+2026-03-19T09:24:23.4630817Z Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+2026-03-19T09:24:23.4677348Z Downloading bs4-0.0.2-py2.py3-none-any.whl (1.2 kB)
+2026-03-19T09:24:23.4726666Z Downloading cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+2026-03-19T09:24:23.4945687Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 221.7 MB/s  0:00:00
+2026-03-19T09:24:23.4979643Z Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+2026-03-19T09:24:23.5035113Z Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+2026-03-19T09:24:23.5094068Z Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+2026-03-19T09:24:23.5144085Z Downloading pycryptodome-3.23.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+2026-03-19T09:24:23.5271724Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 209.3 MB/s  0:00:00
+2026-03-19T09:24:23.5301196Z Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2026-03-19T09:24:23.5351070Z Downloading retry-0.9.2-py2.py3-none-any.whl (8.0 kB)
+2026-03-19T09:24:23.5398258Z Downloading py-1.11.0-py2.py3-none-any.whl (98 kB)
+2026-03-19T09:24:23.5451395Z Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+2026-03-19T09:24:23.5511407Z Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+2026-03-19T09:24:23.5600210Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 155.4 MB/s  0:00:00
+2026-03-19T09:24:23.5628406Z Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+2026-03-19T09:24:23.5680719Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-03-19T09:24:23.5725772Z Downloading simplejson-3.20.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (144 kB)
+2026-03-19T09:24:23.5778488Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-03-19T09:24:23.5831240Z Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+2026-03-19T09:24:23.6001554Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 218.7 MB/s  0:00:00
+2026-03-19T09:24:23.6036389Z Downloading huggingface_hub-1.7.1-py3-none-any.whl (616 kB)
+2026-03-19T09:24:23.6104385Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 616.3/616.3 kB 90.8 MB/s  0:00:00
+2026-03-19T09:24:23.6134102Z Downloading hf_xet-1.4.2-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+2026-03-19T09:24:23.6330735Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 231.2 MB/s  0:00:00
+2026-03-19T09:24:23.6358125Z Downloading fsspec-2026.2.0-py3-none-any.whl (202 kB)
+2026-03-19T09:24:23.6413421Z Downloading packaging-26.0-py3-none-any.whl (74 kB)
+2026-03-19T09:24:23.6464312Z Downloading typer-0.24.1-py3-none-any.whl (56 kB)
+2026-03-19T09:24:23.6513985Z Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+2026-03-19T09:24:23.6573210Z Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+2026-03-19T09:24:23.9133733Z Building wheels for collected packages: pytdx, google-search-results, tinysegmenter, feedfinder2, jieba3k, jsonpath, multitasking, sgmllib3k
+2026-03-19T09:24:23.9141174Z   Building wheel for pytdx (pyproject.toml): started
+2026-03-19T09:24:24.1683102Z   Building wheel for pytdx (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:24.1689668Z   Created wheel for pytdx: filename=pytdx-1.72-py3-none-any.whl size=104758 sha256=131ddb57de40aff7aca988939e953426953f7b7874d6c6ac58428abd802a6cc9
+2026-03-19T09:24:24.1691216Z   Stored in directory: /home/runner/.cache/pip/wheels/01/d0/bd/8ffb612e2e40734c1e967f0302f6605be6954b07bf2f4fd09f
+2026-03-19T09:24:24.1713048Z   Building wheel for google-search-results (pyproject.toml): started
+2026-03-19T09:24:24.3877897Z   Building wheel for google-search-results (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:24.3884501Z   Created wheel for google-search-results: filename=google_search_results-2.4.2-py3-none-any.whl size=32093 sha256=f46d7769888e80071e29d195d2b5ffcfc7cc39fce71e08b3be1beb2873166de8
+2026-03-19T09:24:24.3886491Z   Stored in directory: /home/runner/.cache/pip/wheels/6e/42/3e/aeb691b02cb7175ec70e2da04b5658d4739d2b41e5f73cd06f
+2026-03-19T09:24:24.3918351Z   Building wheel for tinysegmenter (pyproject.toml): started
+2026-03-19T09:24:24.5822061Z   Building wheel for tinysegmenter (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:24.5827834Z   Created wheel for tinysegmenter: filename=tinysegmenter-0.3-py3-none-any.whl size=13634 sha256=bf21f1f0cfbb172c825f6a9ad6dfcab05d51736fb552ed15abe48a6b4c7e2cf5
+2026-03-19T09:24:24.5830226Z   Stored in directory: /home/runner/.cache/pip/wheels/fc/ab/f8/cce3a9ae6d828bd346be695f7ff54612cd22b7cbd7208d68f3
+2026-03-19T09:24:24.5851857Z   Building wheel for feedfinder2 (pyproject.toml): started
+2026-03-19T09:24:24.7844606Z   Building wheel for feedfinder2 (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:24.7850742Z   Created wheel for feedfinder2: filename=feedfinder2-0.0.4-py3-none-any.whl size=3394 sha256=f5d1442e7c2d7ef4819adaf6ce83b3a7fbabf2be1e79183d08b7ad445756bed3
+2026-03-19T09:24:24.7852625Z   Stored in directory: /home/runner/.cache/pip/wheels/80/d5/72/9cd9eccc819636436c6a6e59c22a0fb1ec167beef141f56491
+2026-03-19T09:24:24.7873101Z   Building wheel for jieba3k (pyproject.toml): started
+2026-03-19T09:24:25.9076624Z   Building wheel for jieba3k (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:25.9136289Z   Created wheel for jieba3k: filename=jieba3k-0.35.1-py3-none-any.whl size=7398404 sha256=c03a0cf4047635b28d249d213102e86caf21af59bfcad3f1343b4ea8864d0a81
+2026-03-19T09:24:25.9137704Z   Stored in directory: /home/runner/.cache/pip/wheels/3a/a1/46/8e68055c1713f9c4598774c15ad0541f26d5425ee7423b6493
+2026-03-19T09:24:25.9157306Z   Building wheel for jsonpath (pyproject.toml): started
+2026-03-19T09:24:26.1090544Z   Building wheel for jsonpath (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:26.1097455Z   Created wheel for jsonpath: filename=jsonpath-0.82.2-py3-none-any.whl size=5666 sha256=ace190aab3d0354f5b6597c4c8830060cc536b1be5567591bd2d5e00e45d7ad2
+2026-03-19T09:24:26.1099199Z   Stored in directory: /home/runner/.cache/pip/wheels/7d/b8/16/48bbd715040679311fa68cb564ad24a97d9a67fea5d4c848c8
+2026-03-19T09:24:26.1118248Z   Building wheel for multitasking (pyproject.toml): started
+2026-03-19T09:24:26.3074704Z   Building wheel for multitasking (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:26.3081795Z   Created wheel for multitasking: filename=multitasking-0.0.12-py3-none-any.whl size=15635 sha256=7b89eb8502c94697884ec7ecb3986fa5344d037ca3c6cd3f67403ffeed391407
+2026-03-19T09:24:26.3083549Z   Stored in directory: /home/runner/.cache/pip/wheels/42/d6/84/bf57a755f4569494cd00de4bb46ef064874823f4d19c82e960
+2026-03-19T09:24:26.3113632Z   Building wheel for sgmllib3k (pyproject.toml): started
+2026-03-19T09:24:26.5097585Z   Building wheel for sgmllib3k (pyproject.toml): finished with status 'done'
+2026-03-19T09:24:26.5105520Z   Created wheel for sgmllib3k: filename=sgmllib3k-1.0.0-py3-none-any.whl size=6090 sha256=68baa5a95feb62b1bb84a01a1e11f13f556b9f823acba21eab4ee4235bb72ea3
+2026-03-19T09:24:26.5107292Z   Stored in directory: /home/runner/.cache/pip/wheels/3b/25/2a/105d6a15df6914f4d15047691c6c28f9052cc1173e40285d03
+2026-03-19T09:24:26.5122544Z Successfully built pytdx google-search-results tinysegmenter feedfinder2 jieba3k jsonpath multitasking sgmllib3k
+2026-03-19T09:24:26.7774226Z Installing collected packages: webencodings, tinysegmenter, sgmllib3k, pytz, py-mini-racer, peewee, multitasking, korean_lunar_calendar, jsonpath, jieba3k, zipp, xlrd, websockets, websocket-client, uvloop, urllib3, tzdata, typing-extensions, tqdm, toolz, tenacity, tabulate, soupsieve, socksio, sniffio, six, simplejson, shellingham, schedule, rpds-py, regex, PyYAML, python-multipart, python-dotenv, pypinyin, pyluach, pygments, pycryptodome, pycparser, py, protobuf, propcache, platformdirs, Pillow, packaging, numpy, multidict, mdurl, MarkupSafe, markdown2, lxml, json-repair, joblib, jiter, idna, httptools, hf-xet, h11, greenlet, fsspec, frozenlist, frozendict, filelock, feedparser, fastuuid, fake-useragent, et-xmlfile, distro, decorator, cssselect, click, charset_normalizer, certifi, attrs, annotated-types, annotated-doc, akracer, aiohappyeyeballs, yarl, uvicorn, typing-inspection, sqlalchemy, retry, requests, referencing, python-dateutil, pydantic-core, openpyxl, nltk, markdown-it-py, lxml_html_clean, jinja2, importlib-metadata, imgkit, httpcore, html5lib, cffi, beautifulsoup4, anyio, aiosignal, watchfiles, tiktoken, starlette, rich, requests-toolbelt, requests-file, pydantic, pandas, jsonschema-specifications, httpx, google-search-results, feedfinder2, curl_cffi, cryptography, bs4, aiohttp, yfinance, typer, tushare, tldextract, tickflow, tavily-python, pytdx, openai, lark-oapi, jsonschema, fastapi, exchange-calendars, efinance, discord.py, dingtalk-stream, baostock, akshare, newspaper3k, huggingface-hub, tokenizers, litellm
+2026-03-19T09:24:55.1432014Z 
+2026-03-19T09:24:55.1492469Z Successfully installed MarkupSafe-3.0.3 Pillow-12.1.1 PyYAML-6.0.3 aiohappyeyeballs-2.6.1 aiohttp-3.13.3 aiosignal-1.4.0 akracer-0.0.14 akshare-1.18.40 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.1 attrs-25.4.0 baostock-0.8.9 beautifulsoup4-4.14.3 bs4-0.0.2 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.6 click-8.3.1 cryptography-46.0.5 cssselect-1.4.0 curl_cffi-0.13.0 decorator-5.2.1 dingtalk-stream-0.24.3 discord.py-2.7.1 distro-1.9.0 efinance-0.5.8 et-xmlfile-2.0.0 exchange-calendars-4.13.2 fake-useragent-2.2.0 fastapi-0.135.1 fastuuid-0.14.0 feedfinder2-0.0.4 feedparser-6.0.12 filelock-3.25.2 frozendict-2.4.7 frozenlist-1.8.0 fsspec-2026.2.0 google-search-results-2.4.2 greenlet-3.3.2 h11-0.16.0 hf-xet-1.4.2 html5lib-1.1 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 huggingface-hub-1.7.1 idna-3.11 imgkit-1.2.3 importlib-metadata-8.7.1 jieba3k-0.35.1 jinja2-3.1.6 jiter-0.13.0 joblib-1.5.3 json-repair-0.58.6 jsonpath-0.82.2 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 korean_lunar_calendar-0.3.1 lark-oapi-1.5.3 litellm-1.82.4 lxml-6.0.2 lxml_html_clean-0.4.4 markdown-it-py-4.0.0 markdown2-2.5.5 mdurl-0.1.2 multidict-6.7.1 multitasking-0.0.12 newspaper3k-0.2.8 nltk-3.9.3 numpy-2.4.3 openai-2.29.0 openpyxl-3.1.5 packaging-26.0 pandas-3.0.1 peewee-4.0.2 platformdirs-4.9.4 propcache-0.4.1 protobuf-7.34.0 py-1.11.0 py-mini-racer-0.6.0 pycparser-3.0 pycryptodome-3.23.0 pydantic-2.12.5 pydantic-core-2.41.5 pygments-2.19.2 pyluach-2.3.0 pypinyin-0.55.0 pytdx-1.72 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-multipart-0.0.22 pytz-2026.1.post1 referencing-0.37.0 regex-2026.2.28 requests-2.32.5 requests-file-3.0.1 requests-toolbelt-1.0.0 retry-0.9.2 rich-14.3.3 rpds-py-0.30.0 schedule-1.2.2 sgmllib3k-1.0.0 shellingham-1.5.4 simplejson-3.20.2 six-1.17.0 sniffio-1.3.1 socksio-1.0.0 soupsieve-2.8.3 sqlalchemy-2.0.48 starlette-0.52.1 tabulate-0.10.0 tavily-python-0.7.23 tenacity-9.1.4 tickflow-0.1.17 tiktoken-0.11.0 tinysegmenter-0.3 tldextract-5.3.1 tokenizers-0.22.2 toolz-1.1.0 tqdm-4.67.3 tushare-1.4.25 typer-0.24.1 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.3 urllib3-2.6.3 uvicorn-0.42.0 uvloop-0.22.1 watchfiles-1.1.1 webencodings-0.5.1 websocket-client-1.9.0 websockets-16.0 xlrd-2.0.2 yarl-1.23.0 yfinance-1.2.0 zipp-3.23.0
+2026-03-19T09:24:56.7841135Z ##[group]Run mkdir -p data logs reports
+2026-03-19T09:24:56.7841727Z [36;1mmkdir -p data logs reports[0m
+2026-03-19T09:24:56.7893691Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:24:56.7893943Z env:
+2026-03-19T09:24:56.7894214Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7894650Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:56.7895070Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7895441Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7895807Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.7896187Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:56.7896504Z ##[endgroup]
+2026-03-19T09:24:56.8053911Z ##[group]Run # 处理 LITELLM YAML 配置文件
+2026-03-19T09:24:56.8054311Z [36;1m# 处理 LITELLM YAML 配置文件[0m
+2026-03-19T09:24:56.8054691Z [36;1mif [ -n "$LITELLM_CONFIG_YAML" ] && [ -n "$LITELLM_CONFIG" ]; then[0m
+2026-03-19T09:24:56.8055215Z [36;1m  echo "📝 使用 GitHub Actions Secrets/Variables 中的 LITELLM_CONFIG_YAML 配置"[0m
+2026-03-19T09:24:56.8055599Z [36;1m  # 确保目录存在[0m
+2026-03-19T09:24:56.8055845Z [36;1m  mkdir -p "$(dirname "$LITELLM_CONFIG")"[0m
+2026-03-19T09:24:56.8056131Z [36;1m  # 写入配置文件（覆盖已有文件）[0m
+2026-03-19T09:24:56.8056401Z [36;1m  echo "$LITELLM_CONFIG_YAML" > "$LITELLM_CONFIG"[0m
+2026-03-19T09:24:56.8056733Z [36;1m  echo "✅ LITELLM 配置文件已写入: $LITELLM_CONFIG"[0m
+2026-03-19T09:24:56.8057004Z [36;1mfi[0m
+2026-03-19T09:24:56.8057176Z [36;1m[0m
+2026-03-19T09:24:56.8057344Z [36;1m# 判断运行模式[0m
+2026-03-19T09:24:56.8057534Z [36;1mMODE="full"[0m
+2026-03-19T09:24:56.8057719Z [36;1m[0m
+2026-03-19T09:24:56.8057985Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:56.8058313Z [36;1mecho "🚀 A股自选股智能分析系统"[0m
+2026-03-19T09:24:56.8058587Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:56.8058952Z [36;1mecho "⏰ 时间: $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"[0m
+2026-03-19T09:24:56.8059281Z [36;1mecho "🎯 运行模式: $MODE"[0m
+2026-03-19T09:24:56.8059745Z [36;1mecho "📊 自选股: $STOCK_LIST"[0m
+2026-03-19T09:24:56.8060005Z [36;1mecho "📝 报告类型: $REPORT_TYPE"[0m
+2026-03-19T09:24:56.8060249Z [36;1mecho ""[0m
+2026-03-19T09:24:56.8060473Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:56.8060754Z [36;1mecho "📋 配置检查"[0m
+2026-03-19T09:24:56.8060994Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:56.8061273Z [36;1mecho "【AI 配置】"[0m
+2026-03-19T09:24:56.8061746Z [36;1mecho "  LiteLLM: $([ -n "$LITELLM_CONFIG" ] || [ -n "$LITELLM_API_KEY" ] || [ -n "$LITELLM_MODEL" ] && echo '✅ 已配置' || echo '❌ 未配置')"[0m
+2026-03-19T09:24:56.8062404Z [36;1mecho "  Gemini API Key: $([ -n "$GEMINI_API_KEY" ] && echo '✅ 已配置' || echo '❌ 未配置')"[0m
+2026-03-19T09:24:56.8063097Z [36;1mecho "  AIHubMix Key:   $([ -n "$AIHUBMIX_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8063595Z [36;1mecho "  OpenAI API Key: $([ -n "$OPENAI_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8064117Z [36;1mecho "  Anthropic Key:  $([ -n "$ANTHROPIC_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8064501Z [36;1mecho ""[0m
+2026-03-19T09:24:56.8064698Z [36;1mecho "【搜索引擎】"[0m
+2026-03-19T09:24:56.8065027Z [36;1mecho "  Bocha API Keys: $([ -n "$BOCHA_API_KEYS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8065533Z [36;1mecho "  Tavily API Keys: $([ -n "$TAVILY_API_KEYS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8066043Z [36;1mecho "  SerpAPI Keys: $([ -n "$SERPAPI_API_KEYS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8066579Z [36;1mecho "  MiniMax API Keys: $([ -n "$MINIMAX_API_KEYS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8067103Z [36;1mecho "  Brave API Keys: $([ -n "$BRAVE_API_KEYS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8067623Z [36;1mecho "  SearXNG Base URLs: $([ -n "$SEARXNG_BASE_URLS" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8068076Z [36;1mcase "${SEARXNG_PUBLIC_INSTANCES_ENABLED,,}" in[0m
+2026-03-19T09:24:56.8068372Z [36;1m  0|false|no|off)[0m
+2026-03-19T09:24:56.8068625Z [36;1m    echo "  SearXNG Public Instances: ❌ 已禁用"[0m
+2026-03-19T09:24:56.8068902Z [36;1m    ;;[0m
+2026-03-19T09:24:56.8069081Z [36;1m  "")[0m
+2026-03-19T09:24:56.8069300Z [36;1m    echo "  SearXNG Public Instances: ✅ 默认开启"[0m
+2026-03-19T09:24:56.8069810Z [36;1m    ;;[0m
+2026-03-19T09:24:56.8069981Z [36;1m  *)[0m
+2026-03-19T09:24:56.8070196Z [36;1m    echo "  SearXNG Public Instances: ✅ 已启用"[0m
+2026-03-19T09:24:56.8070464Z [36;1m    ;;[0m
+2026-03-19T09:24:56.8070631Z [36;1mesac[0m
+2026-03-19T09:24:56.8070802Z [36;1mecho ""[0m
+2026-03-19T09:24:56.8071189Z [36;1mecho "【通知渠道】"[0m
+2026-03-19T09:24:56.8071530Z [36;1mecho "  PushPlus: $([ -n "$PUSHPLUS_TOKEN" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8072006Z [36;1mecho "  企业微信: $([ -n "$WECHAT_WEBHOOK_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8072450Z [36;1mecho "  飞书: $([ -n "$FEISHU_WEBHOOK_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8072926Z [36;1mecho "  Telegram: $([ -n "$TELEGRAM_BOT_TOKEN" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8073423Z [36;1mecho "  Discord: $([ -n "$DISCORD_WEBHOOK_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8073889Z [36;1mecho "  AstrBot: $([ -n "$ASTRBOT_URL" ] && echo '✅ 已配置' || echo '⚪ 未配置')"[0m
+2026-03-19T09:24:56.8074283Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:56.8074553Z [36;1mecho ""[0m
+2026-03-19T09:24:56.8074731Z [36;1m[0m
+2026-03-19T09:24:56.8074897Z [36;1m# 构建命令行参数[0m
+2026-03-19T09:24:56.8075108Z [36;1mFORCE_RUN_ARG=""[0m
+2026-03-19T09:24:56.8075338Z [36;1mif [ "false" = "true" ]; then[0m
+2026-03-19T09:24:56.8075592Z [36;1m  FORCE_RUN_ARG="--force-run"[0m
+2026-03-19T09:24:56.8075837Z [36;1m  echo "⚡ 已启用强制运行模式（跳过交易日检查）"[0m
+2026-03-19T09:24:56.8076061Z [36;1mfi[0m
+2026-03-19T09:24:56.8076222Z [36;1m[0m
+2026-03-19T09:24:56.8076384Z [36;1m# 执行分析[0m
+2026-03-19T09:24:56.8076592Z [36;1mif [ "$MODE" = "market-only" ]; then[0m
+2026-03-19T09:24:56.8076918Z [36;1m  python main.py --market-review $FORCE_RUN_ARG[0m
+2026-03-19T09:24:56.8077240Z [36;1melif [ "$MODE" = "stocks-only" ]; then[0m
+2026-03-19T09:24:56.8077571Z [36;1m  python main.py --no-market-review $FORCE_RUN_ARG[0m
+2026-03-19T09:24:56.8077865Z [36;1melse[0m
+2026-03-19T09:24:56.8078059Z [36;1m  python main.py $FORCE_RUN_ARG[0m
+2026-03-19T09:24:56.8078300Z [36;1mfi[0m
+2026-03-19T09:24:56.8130432Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:24:56.8130675Z env:
+2026-03-19T09:24:56.8130955Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.8131561Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:56.8132001Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.8132382Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.8132759Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:56.8133134Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:56.8133444Z   LITELLM_CONFIG: 
+2026-03-19T09:24:56.8133639Z   LITELLM_CONFIG_YAML: 
+2026-03-19T09:24:56.8133843Z   LITELLM_API_KEY: 
+2026-03-19T09:24:56.8134031Z   LITELLM_MODEL: 
+2026-03-19T09:24:56.8134210Z   GEMINI_API_KEY: 
+2026-03-19T09:24:56.8134422Z   GEMINI_MODEL: gemini-3-flash-preview
+2026-03-19T09:24:56.8134690Z   GEMINI_MODEL_FALLBACK: gemini-2.5-flash
+2026-03-19T09:24:56.8134944Z   GEMINI_REQUEST_DELAY: 3.0
+2026-03-19T09:24:56.8135377Z   AIHUBMIX_KEY: ***
+2026-03-19T09:24:56.8135571Z   OPENAI_API_KEY: 
+2026-03-19T09:24:56.8135760Z   OPENAI_BASE_URL: 
+2026-03-19T09:24:56.8135949Z   OPENAI_MODEL: 
+2026-03-19T09:24:56.8136134Z   ANTHROPIC_API_KEY: 
+2026-03-19T09:24:56.8136365Z   ANTHROPIC_MODEL: claude-3-5-sonnet-20241022
+2026-03-19T09:24:56.8136628Z   TUSHARE_TOKEN: 
+2026-03-19T09:24:56.8136807Z   BOCHA_API_KEYS: 
+2026-03-19T09:24:56.8137155Z   TAVILY_API_KEYS: ***
+2026-03-19T09:24:56.8137367Z   SERPAPI_API_KEYS: 
+2026-03-19T09:24:56.8137556Z   MINIMAX_API_KEYS: 
+2026-03-19T09:24:56.8137740Z   BRAVE_API_KEYS: 
+2026-03-19T09:24:56.8137923Z   SEARXNG_BASE_URLS: 
+2026-03-19T09:24:56.8138132Z   SEARXNG_PUBLIC_INSTANCES_ENABLED: 
+2026-03-19T09:24:56.8138378Z   WECHAT_WEBHOOK_URL: 
+2026-03-19T09:24:56.8138581Z   WECHAT_MSG_TYPE: markdown
+2026-03-19T09:24:56.8138792Z   FEISHU_WEBHOOK_URL: 
+2026-03-19T09:24:56.8138984Z   TELEGRAM_BOT_TOKEN: 
+2026-03-19T09:24:56.8139172Z   TELEGRAM_CHAT_ID: 
+2026-03-19T09:24:56.8139541Z   TELEGRAM_MESSAGE_THREAD_ID: 
+2026-03-19T09:24:56.8139800Z   EMAIL_SENDER: ***
+2026-03-19T09:24:56.8140200Z   EMAIL_PASSWORD: ***
+2026-03-19T09:24:56.8140440Z   EMAIL_RECEIVERS: ***
+2026-03-19T09:24:56.8140689Z   EMAIL_SENDER_NAME: daily_stock_analysis股票分析助手
+2026-03-19T09:24:56.8140974Z   PUSHOVER_USER_KEY: 
+2026-03-19T09:24:56.8141175Z   PUSHOVER_API_TOKEN: 
+2026-03-19T09:24:56.8141406Z   PUSHPLUS_TOKEN: 
+2026-03-19T09:24:56.8141597Z   CUSTOM_WEBHOOK_URLS: 
+2026-03-19T09:24:56.8141806Z   CUSTOM_WEBHOOK_BEARER_TOKEN: 
+2026-03-19T09:24:56.8142028Z   DISCORD_WEBHOOK_URL: 
+2026-03-19T09:24:56.8142222Z   DISCORD_BOT_TOKEN: 
+2026-03-19T09:24:56.8142422Z   DISCORD_MAIN_CHANNEL_ID: 
+2026-03-19T09:24:56.8142632Z   FEISHU_APP_ID: 
+2026-03-19T09:24:56.8142820Z   FEISHU_APP_SECRET: 
+2026-03-19T09:24:56.8143012Z   FEISHU_FOLDER_TOKEN: 
+2026-03-19T09:24:56.8143202Z   ASTRBOT_URL: 
+2026-03-19T09:24:56.8143391Z   ASTRBOT_TOKEN: 
+2026-03-19T09:24:56.8143576Z   SERVERCHAN3_SENDKEY: 
+2026-03-19T09:24:56.8143806Z   STOCK_LIST: ***
+2026-03-19T09:24:56.8143998Z   MARKET_REVIEW_REGION: cn
+2026-03-19T09:24:56.8144210Z   REPORT_TYPE: simple
+2026-03-19T09:24:56.8144422Z   SINGLE_STOCK_NOTIFY: false
+2026-03-19T09:24:56.8144661Z   MARKET_REVIEW_ENABLED: true
+2026-03-19T09:24:56.8144877Z   ANALYSIS_DELAY: 0
+2026-03-19T09:24:56.8145076Z   TRADING_DAY_CHECK_ENABLED: true
+2026-03-19T09:24:56.8145303Z   LOG_LEVEL: INFO
+2026-03-19T09:24:56.8145478Z   MAX_WORKERS: 1
+2026-03-19T09:24:56.8145674Z   ENABLE_CHIP_DISTRIBUTION: false
+2026-03-19T09:24:56.8146004Z   REALTIME_SOURCE_PRIORITY: tencent,akshare_sina,efinance,akshare_em
+2026-03-19T09:24:56.8146353Z ##[endgroup]
+2026-03-19T09:24:56.8216946Z ==========================================
+2026-03-19T09:24:56.8217589Z 🚀 A股自选股智能分析系统
+2026-03-19T09:24:56.8218108Z ==========================================
+2026-03-19T09:24:56.8283901Z ⏰ 时间: 2026-03-19 17:24:56
+2026-03-19T09:24:56.8284389Z 🎯 运行模式: full
+2026-03-19T09:24:56.8284965Z 📊 自选股: ***
+2026-03-19T09:24:56.8285379Z 📝 报告类型: simple
+2026-03-19T09:24:56.8285660Z 
+2026-03-19T09:24:56.8285881Z ==========================================
+2026-03-19T09:24:56.8286468Z 📋 配置检查
+2026-03-19T09:24:56.8287059Z ==========================================
+2026-03-19T09:24:56.8287522Z 【AI 配置】
+2026-03-19T09:24:56.8291992Z   LiteLLM: ❌ 未配置
+2026-03-19T09:24:56.8297348Z   Gemini API Key: ❌ 未配置
+2026-03-19T09:24:56.8303050Z   AIHubMix Key:   ✅ 已配置
+2026-03-19T09:24:56.8308235Z   OpenAI API Key: ⚪ 未配置
+2026-03-19T09:24:56.8313780Z   Anthropic Key:  ⚪ 未配置
+2026-03-19T09:24:56.8314048Z 
+2026-03-19T09:24:56.8314253Z 【搜索引擎】
+2026-03-19T09:24:56.8319547Z   Bocha API Keys: ⚪ 未配置
+2026-03-19T09:24:56.8324820Z   Tavily API Keys: ✅ 已配置
+2026-03-19T09:24:56.8330153Z   SerpAPI Keys: ⚪ 未配置
+2026-03-19T09:24:56.8335346Z   MiniMax API Keys: ⚪ 未配置
+2026-03-19T09:24:56.8340824Z   Brave API Keys: ⚪ 未配置
+2026-03-19T09:24:56.8346232Z   SearXNG Base URLs: ⚪ 未配置
+2026-03-19T09:24:56.8346752Z   SearXNG Public Instances: ✅ 默认开启
+2026-03-19T09:24:56.8347054Z 
+2026-03-19T09:24:56.8347219Z 【通知渠道】
+2026-03-19T09:24:56.8352884Z   PushPlus: ⚪ 未配置
+2026-03-19T09:24:56.8357947Z   企业微信: ⚪ 未配置
+2026-03-19T09:24:56.8363241Z   飞书: ⚪ 未配置
+2026-03-19T09:24:56.8368123Z   Telegram: ⚪ 未配置
+2026-03-19T09:24:56.8373654Z   Discord: ⚪ 未配置
+2026-03-19T09:24:56.8378716Z   AstrBot: ⚪ 未配置
+2026-03-19T09:24:56.8379073Z ==========================================
+2026-03-19T09:24:56.8379536Z 
+2026-03-19T09:24:57.6207019Z Traceback (most recent call last):
+2026-03-19T09:24:57.6215474Z   File "/home/runner/work/daily_stock_analysis/daily_stock_analysis/main.py", line 46, in <module>
+2026-03-19T09:24:57.6216088Z     from data_provider.base import canonical_stock_code
+2026-03-19T09:24:57.6216750Z   File "/home/runner/work/daily_stock_analysis/daily_stock_analysis/data_provider/__init__.py", line 39, in <module>
+2026-03-19T09:24:57.6217430Z     from .crypto_binance import get_crypto_klines, get_crypto_quote
+2026-03-19T09:24:57.6218118Z   File "/home/runner/work/daily_stock_analysis/daily_stock_analysis/data_provider/crypto_binance.py", line 2
+2026-03-19T09:24:57.6218640Z     """
+2026-03-19T09:24:57.6218849Z IndentationError: unexpected indent
+2026-03-19T09:24:57.6954197Z ##[error]Process completed with exit code 1.
+2026-03-19T09:24:57.7018204Z ##[group]Run actions/upload-artifact@v6
+2026-03-19T09:24:57.7018502Z with:
+2026-03-19T09:24:57.7018696Z   name: analysis-reports-1
+2026-03-19T09:24:57.7018935Z   path: reports/
+logs/
+
+2026-03-19T09:24:57.7019155Z   retention-days: 30
+2026-03-19T09:24:57.7019578Z   if-no-files-found: warn
+2026-03-19T09:24:57.7019808Z   compression-level: 6
+2026-03-19T09:24:57.7020007Z   overwrite: false
+2026-03-19T09:24:57.7020207Z   include-hidden-files: false
+2026-03-19T09:24:57.7020423Z env:
+2026-03-19T09:24:57.7020661Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.7021076Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:57.7021478Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.7021840Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.7022199Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.7022602Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:57.7023079Z ##[endgroup]
+2026-03-19T09:24:57.8660408Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-03-19T09:24:57.8664402Z The least common ancestor is /home/runner/work/daily_stock_analysis/daily_stock_analysis. This will be the root directory of the artifact
+2026-03-19T09:24:57.8678310Z ##[warning]No files were found with the provided path: reports/
+logs/. No artifacts will be uploaded.
+2026-03-19T09:24:57.8765328Z ##[group]Run echo ""
+2026-03-19T09:24:57.8765596Z [36;1mecho ""[0m
+2026-03-19T09:24:57.8765833Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:57.8766130Z [36;1mecho "📊 分析完成"[0m
+2026-03-19T09:24:57.8766376Z [36;1mecho "=========================================="[0m
+2026-03-19T09:24:57.8766738Z [36;1mif [ -d "reports" ] && [ "$(ls -A reports 2>/dev/null)" ]; then[0m
+2026-03-19T09:24:57.8767064Z [36;1m  echo "生成的报告:"[0m
+2026-03-19T09:24:57.8767306Z [36;1m  ls -la reports/[0m
+2026-03-19T09:24:57.8767518Z [36;1melse[0m
+2026-03-19T09:24:57.8767704Z [36;1m  echo "⚠️ 未生成报告文件"[0m
+2026-03-19T09:24:57.8767910Z [36;1mfi[0m
+2026-03-19T09:24:57.8768081Z [36;1mecho ""[0m
+2026-03-19T09:24:57.8768344Z [36;1mif [ -f "logs/stock_analysis_$(date +%Y%m%d).log" ]; then[0m
+2026-03-19T09:24:57.8768676Z [36;1m  echo "📜 最近日志（最后 30 行）:"[0m
+2026-03-19T09:24:57.8768997Z [36;1m  tail -30 logs/stock_analysis_*.log 2>/dev/null || echo "无日志"[0m
+2026-03-19T09:24:57.8769774Z [36;1mfi[0m
+2026-03-19T09:24:57.8818307Z shell: /usr/bin/bash -e {0}
+2026-03-19T09:24:57.8818537Z env:
+2026-03-19T09:24:57.8818798Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.8819224Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-19T09:24:57.8819860Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.8820237Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.8820619Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-19T09:24:57.8820990Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-19T09:24:57.8821297Z ##[endgroup]
+2026-03-19T09:24:57.8892018Z 
+2026-03-19T09:24:57.8892234Z ==========================================
+2026-03-19T09:24:57.8892774Z 📊 分析完成
+2026-03-19T09:24:57.8892969Z ==========================================
+2026-03-19T09:24:57.8913299Z ⚠️ 未生成报告文件
+2026-03-19T09:24:57.8913518Z 
+2026-03-19T09:24:57.9047226Z Post job cleanup.
+2026-03-19T09:24:57.9861382Z [command]/usr/bin/git version
+2026-03-19T09:24:57.9897893Z git version 2.53.0
+2026-03-19T09:24:57.9940392Z Temporarily overriding HOME='/home/runner/work/_temp/30142aed-10bb-45d9-8d19-55558e07fac4' before making global git config changes
+2026-03-19T09:24:57.9941819Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-19T09:24:57.9946385Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/daily_stock_analysis/daily_stock_analysis
+2026-03-19T09:24:57.9987907Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-19T09:24:58.0025457Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-19T09:24:58.0283080Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-19T09:24:58.0310909Z http.https://github.com/.extraheader
+2026-03-19T09:24:58.0325152Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-19T09:24:58.0366075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-19T09:24:58.0642051Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-19T09:24:58.0681626Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-19T09:24:58.1095657Z Cleaning up orphan processes
