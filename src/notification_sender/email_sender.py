@@ -209,6 +209,26 @@ class EmailSender:
             logger.error(f"邮件发送失败：无法连接 SMTP 服务器 - {e}")
             return False
         except Exception as e:
+            # 兼容性兜底：当 SSL(465) 连接失败时，尝试切到 STARTTLS(587)
+            # 例如 GitHub Actions runner 对 465 出站受限但 587 可用的情况。
+            if use_ssl and smtp_port == 465:
+                try:
+                    logger.warning(
+                        "发送邮件失败（%s），尝试切换 STARTTLS 到 %s:%d 重试",
+                        e,
+                        smtp_server,
+                        587,
+                    )
+                    server = smtplib.SMTP(smtp_server, 587, timeout=30)
+                    server.starttls()
+                    server.login(sender, password)
+                    server.send_message(msg)
+                    logger.info("邮件发送成功（587 重试），收件人: %s", receivers)
+                    return True
+                except Exception as e2:  # noqa: BLE001
+                    logger.error("发送邮件重试失败: %s", e2)
+                    return False
+
             logger.error(f"发送邮件失败: {e}")
             return False
         finally:
@@ -265,6 +285,25 @@ class EmailSender:
             logger.info("邮件（内联图片）发送成功，收件人: %s", receivers)
             return True
         except Exception as e:
+            # 兼容性兜底：当 SSL(465) 连接失败时，尝试切到 STARTTLS(587)
+            if use_ssl and smtp_port == 465:
+                try:
+                    logger.warning(
+                        "邮件（内联图片）发送失败（%s），尝试切换 STARTTLS 到 %s:%d 重试",
+                        e,
+                        smtp_server,
+                        587,
+                    )
+                    server = smtplib.SMTP(smtp_server, 587, timeout=30)
+                    server.starttls()
+                    server.login(sender, password)
+                    server.send_message(msg)
+                    logger.info("邮件（内联图片）发送成功（587 重试），收件人: %s", receivers)
+                    return True
+                except Exception as e2:  # noqa: BLE001
+                    logger.error("邮件（内联图片）重试失败: %s", e2)
+                    return False
+
             logger.error("邮件（内联图片）发送失败: %s", e)
             return False
         finally:
