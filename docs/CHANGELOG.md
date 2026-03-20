@@ -15,8 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - **GitHub Actions 下 AIHubMix / OpenAI 兼容模型名为空**：工作流对未配置的 `OPENAI_MODEL` 等变量会注入空字符串，导致 `litellm` 实际请求 `model='openai/'` 并触发 AIHubMix「Incorrect model ID」。配置加载现对 `OPENAI_MODEL`、`GEMINI_MODEL`、`ANTHROPIC_MODEL`、`LITELLM_MODEL` 等使用「空则回退默认值」语义，与本地未设置环境变量一致。
 
+- **云端 LLM 主备模型链路未生效**：`daily_analysis` 工作流补齐 `LITELLM_FALLBACK_MODELS` 注入，并将 AIHubMix 主模型默认设为 `gpt-4.1-free`，失败时依次回退到 `gemini-3-flash-preview-free / coding-minimax-m2.7-free / coding-glm-5-free`。
+
+- **币圈数据源单点故障导致日报缺失**：币圈数据源默认增加 `CoinGecko` 兜底（`CRYPTO_DATA_PROVIDER=binance,coingecko`），当 Binance K 线请求失败时自动降级到 CoinGecko，减少“币圈日报缺失”。
+
 ### 新功能
 
+- **本地快速烟测**：`python test_env.py --crypto` 仅请求少量 Binance 现货 K 线、不跑完整管道、不调 LLM；`python test_env.py --config` 现额外打印解析后的 `LITELLM_MODEL`、`OPENAI_MODEL` 与 `CRYPTO_*` 状态，便于对照 GitHub Actions 而无需每次重跑整次工作流。
 - 🔎 **SearXNG 公共实例自动发现与受控轮询**（#752）— 新增 `SEARXNG_PUBLIC_INSTANCES_ENABLED`，在未配置 `SEARXNG_BASE_URLS` 时默认从 `searx.space` 拉取公共实例列表，并按受控轮询顺序选择实例；同次请求内遇到超时、连接错误、HTTP 非 200 或无效 JSON 会自动切换到下一个实例。已配置自建实例的用户保持原有优先级与语义不变；`daily_analysis` GitHub Actions 工作流也已支持显式透传该开关并在启动日志中展示当前状态。
 - 📈 **TickFlow market review enhancement** (#632) — 新增可选 `TICKFLOW_API_KEY`；配置后，A 股大盘复盘的主要指数行情优先尝试 TickFlow；若当前 TickFlow 套餐支持标的池查询，市场涨跌统计也会优先尝试 TickFlow。失败或权限不足时立即回退到现有 `AkShare / Tushare / efinance` 链路；板块涨跌榜回退顺序保持不变。接入层同时适配了真实 SDK 契约：主指数查询按单次请求上限分批拉取，并将 TickFlow 返回的比例型 `change_pct` / `amplitude` 统一转换为项目内部的百分比口径。
 - 💼 **持仓账本并发写入串行化**（#742）— 持仓源事件写入/删除现在会在 SQLite 下先获取串行化写锁，减少并发卖出把超售流水写入账本的窗口；直接持仓写接口在锁竞争时返回 `409 portfolio_busy`，CSV 导入保持逐条提交并把 busy 计入 `failed_count`。

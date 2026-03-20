@@ -65,7 +65,10 @@ jobs:
           LITELLM_CONFIG: ${{ vars.LITELLM_CONFIG || secrets.LITELLM_CONFIG }}
           LITELLM_CONFIG_YAML: ${{ vars.LITELLM_CONFIG_YAML || secrets.LITELLM_CONFIG_YAML }}
           LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
-          LITELLM_MODEL: ${{ vars.LITELLM_MODEL || secrets.LITELLM_MODEL }}
+          # 默认：AIHubMix 主模型 gpt-4.1-free（可被 vars/secrets 覆盖）
+          LITELLM_MODEL: ${{ vars.LITELLM_MODEL || secrets.LITELLM_MODEL || 'openai/gpt-4.1-free' }}
+          # 备选：同一 AIHubMix 域名下的免费/低成本模型（用于失败自动回退）
+          LITELLM_FALLBACK_MODELS: ${{ vars.LITELLM_FALLBACK_MODELS || secrets.LITELLM_FALLBACK_MODELS || 'openai/gemini-3-flash-preview-free,openai/coding-minimax-m2.7-free,openai/coding-glm-5-free' }}
 
           # Gemini AI（主选）
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -79,7 +82,8 @@ jobs:
           # OpenAI 兼容 API（备选）
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || secrets.OPENAI_MODEL }}
+          # 默认：AIHubMix 的模型名（程序会自动加 openai/ 前缀）
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || secrets.OPENAI_MODEL || 'gpt-4.1-free' }}
 
           # Anthropic / Claude
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -165,7 +169,8 @@ jobs:
           # ==========================================
           CRYPTO_ENABLED: ${{ vars.CRYPTO_ENABLED || secrets.CRYPTO_ENABLED || 'false' }}
           CRYPTO_SYMBOL_LIST: ${{ vars.CRYPTO_SYMBOL_LIST || secrets.CRYPTO_SYMBOL_LIST || '' }}
-          CRYPTO_DATA_PROVIDER: ${{ vars.CRYPTO_DATA_PROVIDER || secrets.CRYPTO_DATA_PROVIDER || 'binance' }}
+          # fallback 順序：先 Binance，失败再走 CoinGecko（减少“币圈日报缺失”）
+          CRYPTO_DATA_PROVIDER: ${{ vars.CRYPTO_DATA_PROVIDER || secrets.CRYPTO_DATA_PROVIDER || 'binance,coingecko' }}
           
           # ==========================================
           # 运行配置 ⬅️ 新增！
@@ -223,6 +228,8 @@ jobs:
           echo "=========================================="
           echo "【AI 配置】"
           echo "  LiteLLM: $([ -n "$LITELLM_CONFIG" ] || [ -n "$LITELLM_API_KEY" ] || [ -n "$LITELLM_MODEL" ] && echo '✅ 已配置' || echo '❌ 未配置')"
+          echo "  LiteLLM 主模型: ${LITELLM_MODEL:-"(auto)"}"
+          echo "  LiteLLM 备选模型: ${LITELLM_FALLBACK_MODELS:-"(empty)"}"
           echo "  Gemini API Key: $([ -n "$GEMINI_API_KEY" ] && echo '✅ 已配置' || echo '❌ 未配置')"
           echo "  AIHubMix Key:   $([ -n "$AIHUBMIX_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "  OpenAI API Key: $([ -n "$OPENAI_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
@@ -258,6 +265,7 @@ jobs:
           echo "【币圈（实验性）】"
           echo "  CRYPTO_ENABLED: ${CRYPTO_ENABLED:-false}"
           echo "  CRYPTO_SYMBOL_LIST: $([ -n "$CRYPTO_SYMBOL_LIST" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
+          echo "  CRYPTO_DATA_PROVIDER: ${CRYPTO_DATA_PROVIDER:-binance}"
           echo "=========================================="
           echo ""
           

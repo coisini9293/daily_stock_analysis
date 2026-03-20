@@ -130,6 +130,13 @@ PROXY_PORT=10809
 
 配置 `LITELLM_CONFIG` / `LLM_CHANNELS` 或至少一个 `*_API_KEY`（如 `GEMINI_API_KEY`、`DEEPSEEK_API_KEY`、`AIHUBMIX_KEY`）。运行 `python test_env.py --config` 校验配置，`python test_env.py --llm` 实际调用 API 测试。
 
+**Q: 不想每次在 GitHub 上跑完整工作流，怎么快速自查币圈和 LLM？**
+
+1. 本地：`python test_env.py --config` 看 `LITELLM_MODEL` 是否为空或异常、`CRYPTO_ENABLED` 与列表是否与 Secrets 一致。  
+2. 币圈数据源：`python test_env.py --crypto`（仅少量 Binance 请求，不调 LLM）。  
+3. LLM 通断：`python test_env.py --llm`（一次真实调用）。  
+4. 仍比整管道快：`python main.py --dry-run` 或缩小 `--stocks` 并加 `--no-market-review --no-notify`（按你本地 CLI 支持情况）。
+
 **Q: 如何同时使用多个模型（如 AIHubmix + DeepSeek + Gemini）？**
 
 使用渠道模式：设置 `LLM_CHANNELS=aihubmix,deepseek,gemini`，并配置各渠道的 `LLM_{NAME}_BASE_URL`、`LLM_{NAME}_API_KEY`、`LLM_{NAME}_MODELS`。也可在 Web 设置页 → AI 模型 → 渠道编辑器中可视化配置。

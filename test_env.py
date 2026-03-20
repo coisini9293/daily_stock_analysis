@@ -17,6 +17,8 @@ A股自选股智能分析系统 - 环境验证测试
     python test_env.py --llm        # 仅测试 LLM
     python test_env.py --fetch      # 仅测试数据获取
     python test_env.py --notify     # 仅测试通知
+    python test_env.py --config     # 仅查看配置（含 LLM 路由与币圈开关）
+    python test_env.py --crypto     # 币圈：拉 1～3 根 Binance K 线，不调 LLM（秒级～数秒）
 
 """
 import os
@@ -80,6 +82,23 @@ def test_config():
         print(f"    Key 前8位: {config.gemini_api_key[:8]}...")
     print(f"  Gemini 主模型: {config.gemini_model}")
     print(f"  Gemini 备选模型: {config.gemini_model_fallback}")
+
+    print_section("LLM 路由（LiteLLM，与主流程一致）")
+    print(f"  LITELLM_MODEL（解析后）: {config.litellm_model or '(空，将由通道/密钥推断)'}")
+    if config.litellm_fallback_models:
+        print(f"  LITELLM_FALLBACK_MODELS: {config.litellm_fallback_models}")
+    print(f"  OPENAI_MODEL（兼容层名称）: {config.openai_model}")
+    print(
+        f"  OpenAI 兼容 Key: {'已配置 ✓' if config.openai_api_key else '未配置 ✗'}"
+        + (f" (前8位: {config.openai_api_key[:8]}...)" if config.openai_api_key else "")
+    )
+    if config.openai_base_url:
+        print(f"  OpenAI 兼容 Base URL: {config.openai_base_url}")
+
+    print_section("币圈（与 CRYPTO_* 环境变量一致）")
+    print(f"  CRYPTO_ENABLED: {config.crypto_enabled}")
+    print(f"  CRYPTO_SYMBOL_LIST: {config.crypto_symbol_list or '(空)'}")
+    print(f"  CRYPTO_DATA_PROVIDER: {config.crypto_data_provider}")
     
     print(f"  企业微信 Webhook: {'已配置 ✓' if config.wechat_webhook_url else '未配置 ✗'}")
     
@@ -91,6 +110,60 @@ def test_config():
     if not any(i.severity in ("error", "warning") for i in issues):
         print("  ✓ 关键配置项验证通过")
     
+    return True
+
+
+def test_crypto_smoke():
+    """
+    币圈数据源烟测：只请求 Binance 公开 K 线，不跑完整管道、不调用 LLM。
+    用于本地或 Actions 前快速确认网络与交易对写法是否正确。
+    """
+    print_header("币圈快速自检（Binance K 线，不调 LLM）")
+
+    from src.config import get_config
+
+    config = get_config()
+
+    print_section("当前币圈配置")
+    print(f"  CRYPTO_ENABLED: {config.crypto_enabled}")
+    print(f"  CRYPTO_SYMBOL_LIST: {config.crypto_symbol_list or '(空，将用 BTCUSDT 试拉)'}")
+    print(f"  CRYPTO_DATA_PROVIDER: {config.crypto_data_provider}")
+
+    symbol = "BTCUSDT"
+    if config.crypto_symbol_list:
+        symbol = (config.crypto_symbol_list[0] or "").strip().upper() or symbol
+
+    if (config.crypto_data_provider or "").lower() != "binance":
+        print(
+            f"\n  ⚠ 当前 CRYPTO_DATA_PROVIDER={config.crypto_data_provider!r}，"
+            "本命令仍仅对 Binance REST 做连通性试拉；其他数据源请用主程序验证。"
+        )
+
+    print_section(f"试拉 K 线: {symbol} (limit=3)")
+    try:
+        from data_provider.crypto_binance import get_crypto_klines
+
+        df = get_crypto_klines(symbol, interval="1d", limit=3)
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ✗ Binance K 线失败: {exc}")
+        print("  提示: 检查本机网络、代理、交易对大小写（如 BTCUSDT）是否存在于现货市场。")
+        return False
+
+    if df is None or getattr(df, "empty", True):
+        print("  ✗ 返回数据为空")
+        return False
+
+    last = df.iloc[-1]
+    print(f"  ✓ 最近一根收盘: date={last.get('date')} close={last.get('close')}")
+    if not config.crypto_enabled:
+        print(
+            "\n  · CRYPTO_ENABLED 为 False 时，主程序 `main.py` 不会跑币圈管道；"
+            "若要在 Actions 里出币圈报告，请在 Secrets/变量中设为 true 并配置列表。"
+        )
+    elif not config.crypto_symbol_list:
+        print(
+            "\n  ⚠ CRYPTO_ENABLED=true 但 CRYPTO_SYMBOL_LIST 为空，主程序仍会跳过币圈分析。"
+        )
     return True
 
 
@@ -445,19 +518,36 @@ def main():
     parser.add_argument('--fetch', action='store_true', help='测试数据获取')
     parser.add_argument('--notify', action='store_true', help='测试通知推送')
     parser.add_argument('--config', action='store_true', help='查看配置')
+    parser.add_argument(
+        '--crypto',
+        action='store_true',
+        help='币圈烟测：仅拉少量 Binance K 线（网络请求），不调 LLM',
+    )
     parser.add_argument('--stock', type=str, help='查询指定股票数据，如 --stock 600519')
     parser.add_argument('--all', action='store_true', help='运行所有测试（包括 LLM）')
     
     args = parser.parse_args()
     
     # 如果没有指定任何参数，运行基础测试
-    if not any([args.db, args.llm, args.fetch, args.notify, args.config, args.stock, args.all]):
+    if not any([
+        args.db,
+        args.llm,
+        args.fetch,
+        args.notify,
+        args.config,
+        args.crypto,
+        args.stock,
+        args.all,
+    ]):
         run_all_tests()
         return 0
     
     # 根据参数运行指定测试
     if args.config:
         test_config()
+
+    if args.crypto:
+        test_crypto_smoke()
     
     if args.db:
         view_database()

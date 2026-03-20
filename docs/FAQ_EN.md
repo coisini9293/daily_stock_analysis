@@ -128,6 +128,13 @@ The system uses exactly one mode by priority: `LITELLM_CONFIG` (YAML) > `LLM_CHA
 
 Configure `LITELLM_CONFIG` / `LLM_CHANNELS` or at least one `*_API_KEY` (e.g. `GEMINI_API_KEY`, `DEEPSEEK_API_KEY`, `AIHUBMIX_KEY`). Run `python test_env.py --config` to validate config, `python test_env.py --llm` to actually call the API.
 
+**Q: How to validate crypto + LLM without running the full GitHub workflow every time?**
+
+1. `python test_env.py --config` — check `LITELLM_MODEL` and `CRYPTO_*` match your Secrets.  
+2. `python test_env.py --crypto` — small Binance-only smoke test (no LLM).  
+3. `python test_env.py --llm` — one real LLM call.  
+4. For a lighter full pipeline locally, use `python main.py --dry-run` or narrow `--stocks` and skip market review / notify if your CLI supports those flags.
+
 **Q: How to use multiple models at once (e.g. AIHubmix + DeepSeek + Gemini)?**
 
 Use channel mode: set `LLM_CHANNELS=aihubmix,deepseek,gemini` and configure each channel's `LLM_{NAME}_BASE_URL`, `LLM_{NAME}_API_KEY`, `LLM_{NAME}_MODELS`. You can also configure visually in Web Settings → AI Model → Channel Editor.

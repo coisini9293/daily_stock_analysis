@@ -187,8 +187,9 @@ VISION_PROVIDER_PRIORITY=gemini,anthropic,openai
 
 配好了之后心惊胆战不知道对不对？在命令行（Terminal）里敲入下面代码帮你挂号问诊：
 
-- `python test_env.py --config` ：纯检测 `.env` 配置文件里的逻辑写得对不对，是不是少写了什么。（秒出结果，不调用网络，纯检查本地文本拼写）
+- `python test_env.py --config` ：纯检测 `.env` 配置文件里的逻辑写得对不对，是不是少写了什么。（秒出结果，不调用网络，纯检查本地文本拼写；并展示解析后的 `LITELLM_MODEL`、OpenAI 兼容层与币圈 `CRYPTO_*` 开关，便于和 Actions 日志对照。）
 - `python test_env.py --llm` ：系统会真的发一句问候语给大模型，让你亲眼看到他的回答。这能彻底测出你的**网络通不通、账号有没有欠费**。
+- `python test_env.py --crypto` ：只拉 1～3 根 Binance 现货 K 线（需出境网络或可用代理），**不调 LLM**；用于快速确认币圈数据源与交易对写法，比跑完整 `main.py` 或整次 GitHub Actions 省时得多。
 
 ### 常见踩坑答疑台
 

@@ -314,6 +314,15 @@ LITELLM_MODEL=openai/deepseek-chat
 领涨: 互联网服务、文化传媒、小金属
 领跌: 保险、航空机场、光伏设备
 ```
+
+## 🔧 本地快速自检（不必每次跑完整 GitHub Actions）
+
+- `python test_env.py --config`：秒级；打印解析后的 `LITELLM_MODEL`、`OPENAI_MODEL` 与币圈 `CRYPTO_*`，便于和 Secrets / 工作流日志对照。
+- `python test_env.py --crypto`：只请求少量 Binance 现货 K 线，**不调 LLM**，用于快速确认币圈数据源与交易对写法。
+- `python test_env.py --llm`：一次真实大模型调用，验证 Key / 网络 / 模型名。
+
+更多排错说明见 [LLM 配置指南](docs/LLM_CONFIG_GUIDE.md)、[FAQ](docs/FAQ.md)。
+
 ## ⚙️ 配置说明
 
 > 📖 完整环境变量、定时任务配置请参考 [完整配置指南](docs/full-guide.md)

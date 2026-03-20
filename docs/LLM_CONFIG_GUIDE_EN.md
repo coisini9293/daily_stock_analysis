@@ -169,8 +169,9 @@ VISION_PROVIDER_PRIORITY=gemini,anthropic,openai
 
 Afraid you got the config wrong? Type the following commands in your terminal to diagnose:
 
-- `python test_env.py --config`: Only verifies if the logic in your `.env` is structurally correct. (Provides instant results, no network calls, strictly checks for syntax omissions).
+- `python test_env.py --config`: Only verifies if the logic in your `.env` is structurally correct. (Provides instant results, no network calls, strictly checks for syntax omissions). It also prints resolved `LITELLM_MODEL`, the OpenAI-compatible layer, and crypto `CRYPTO_*` flags for parity with CI logs.
 - `python test_env.py --llm`: Sends a real greeting to the LLM to test the actual endpoint. This thoroughly verifies if your **network is working** and if your **account has sufficient balance**.
+- `python test_env.py --crypto`: Fetches a few Binance spot klines only (network required; no full pipeline, no LLM). Use it to sanity-check crypto symbols before running a full `main.py` or workflow.
 
 ### Common Pitfalls
 
